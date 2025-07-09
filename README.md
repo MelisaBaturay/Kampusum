@@ -11,5 +11,5 @@
 </p>
 
 
+![image](https://github.com/user-attachments/assets/fa40a193-cd32-4a75-aec6-5d6ca48d6258)
 
-![Ekran görüntüsü 2025-07-08 151256](https://github.com/user-attachments/assets/aaee6acb-e728-4cb3-807b-8f9cb2003084)
