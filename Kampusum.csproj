@@ -7,7 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Contact.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Controllers\Contact.razor" />
+    <Content Remove="wwwroot\College\assets\img\blog\blog-post-3.webp" />
+    <Content Remove="wwwroot\College\assets\img\blog\klinik.htm" />
+    <Content Remove="wwwroot\College\assets\img\education\activities-1.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\arapgiryurdu" />
+    <Content Remove="wwwroot\College\assets\img\education\arapgiryurt.htm" />
+    <Content Remove="wwwroot\College\assets\img\education\campus-10.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\campus-11.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\campus-2.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\campus-5.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\fen-edebiyatfak.htm" />
+    <Content Remove="wwwroot\College\assets\img\education\sağlıkyüskekokulu.jpg" />
+    <Content Remove="wwwroot\College\assets\img\education\showcase-6.webp" />
+    <Content Remove="wwwroot\College\assets\img\person\imgres %281%29.htm" />
     <Content Remove="wwwroot\College\assets\img\person\indirperson-f-12.webp" />
+    <Content Remove="wwwroot\College\assets\img\person\klinik.htm" />
+    <Content Remove="wwwroot\College\assets\img\person\klinik.webp" />
+    <Content Remove="wwwroot\College\assets\img\person\person-m-10.webp" />
   </ItemGroup>
 
   <ItemGroup>
