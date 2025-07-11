@@ -9,35 +9,45 @@
 </head>
 <body>
     <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
+        <div class="form-container sign-up-container"> 
+            <form asp-action="Register" asp-controller="Login" method="post">
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
-            </form>
+                </div>                
+                <input type="text" name="UserName" placeholder="Name" required />
+                <input type="email" name="UserEmail" placeholder="Email" required />
+                <input type="password" name="UserPassword" placeholder="Password" required />
+                <button type="submit">Sign Up</button>
+			</form>
+            @if (ViewBag.RegisterSuccess != null)
+            {
+                <p style="color:green">@ViewBag.RegisterSuccess</p>
+            }
+            @if (ViewBag.RegisterError != null)
+            {
+                <p style="color:red">@ViewBag.RegisterError</p>
+            }
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form asp-action="SignIn" asp-controller="Login" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                </div>                
+                    <input type="hidden" name="returnUrl" value="@Context.Request.Query["ReturnUrl"]" />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required  />
+                <button type="submit">Sign In</button>
             </form>
+            @if (TempData["LoginError"] != null)
+            {
+                <p style="color:red">@TempData["LoginError"]</p>
+            }
         </div>
         <div class="overlay-container">
             <div class="overlay">
