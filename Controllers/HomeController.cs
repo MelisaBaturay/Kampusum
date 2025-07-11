@@ -11,9 +11,15 @@ namespace Kampusum.Controllers
         public IActionResult Starter()
         {
             return View();
-        }public IActionResult StudentLife()
+        }
+        public IActionResult StudentLife()
+        {
+            return View();
+        } 
+        public IActionResult Contact()
         {
             return View();
         }
+
     }
 }
