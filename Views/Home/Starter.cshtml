@@ -259,10 +259,9 @@
             </div>
 
         </section><!-- /About Section -->
-        
-       
-       
-        <!-- Recent News Section -->
+
+
+
         <section id="recent-news" class="recent-news section">
 
             <!-- Section Title -->
@@ -273,105 +272,37 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row gy-4">
-
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
-                        <article class="post-item d-flex">
-                            <div class="post-img">
-                                <img src="../College/assets/img/blog/klinik.jpg" alt="" class="img-fluid" loading="lazy" width="280" height="233">
-                            </div>
-
-                            <div class="post-content flex-grow-1">
-                                <h2 class="post-title">
-                                    <a href="#">Klinik Araştırmalar Mükemmeliyet Merkezi Açıldı</a>
-                                </h2>
-
-                                <p class="post-description">İnönü Üniversitesi ve Roche iş birliğiyle hayata geçirilen bu merkez, yeni alt yapı ve teknolojilerle klinik araştırmalara önemli katkılarda bulunmayı hedefliyor.</p>
-
-                                <div class="post-meta">
-                                    <div class="post-author">
-                                        <img src="../College/assets/img/person/klinik.jpg" alt="" class="img-fluid" width="280" height="233">
-                                    </div>
-                                    <span class="post-date">Mar 15, 2025</span>
+                    @foreach (var news in Model)
+                    {
+                        <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
+                            <article class="post-item d-flex">
+                                <div class="post-img">
+                                    <img src="@news.ImagePath" alt="" class="img-fluid" loading="lazy" width="280" height="233">
                                 </div>
-                            </div>
-                        </article>
-                    </div><!-- End post item -->
 
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="200">
-                        <article class="post-item d-flex">
-                            <div class="post-img">
-                                <img src="../College/assets/img/blog/mezuniyet.jpeg" alt="" class="img-fluid" loading="lazy">
-                            </div>
+                                <div class="post-content flex-grow-1">
+                                    <h2 class="post-title">
+                                        <a href="#">@news.Title</a>
+                                    </h2>
 
-                            <div class="post-content flex-grow-1">
-                                <h2 class="post-title">
-                                    <a href="#">Mezuniyet Coşkusu Yaşandı</a>
-                                </h2>  <p class="post-description"> 2024–2025 Akademik Yılı mezuniyet töreni, büyük bir katılımla stadyumda gerçekleştirildi — öğrenci ve ailelerle birlikte duygusal bir veda töreni oldu.</p>
+                                    <p class="post-description">@news.Description</p>
 
-                                <div class="post-meta">
-                                    <div class="post-author">
-                                        <img src="../College/assets/img/person/mezuniyet.jpeg" alt="" class="img-fluid">
+                                    <div class="post-meta">
+                                        <div class="post-author">
+                                            <img src="@news.AuthorImagePath" alt="" class="img-fluid" width="280" height="233">
+                                        </div>
+                                        <span class="post-date">@news.Date.ToString("MMM dd, yyyy")</span>
                                     </div>
-                                    <span class="post-date">Apr 22, 2025</span>
                                 </div>
-                            </div>
-                        </article>
-                    </div><!-- End post item -->
-
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
-                        <article class="post-item d-flex">
-                            <div class="post-img">
-                                <img src="../College/assets/img/blog/bebek.jpg" alt="" class="img-fluid" loading="lazy">
-                            </div>
-
-                            <div class="post-content flex-grow-1">
-                                 <h2 class="post-title">
-                                    <a href="#">Reyyan Bebek Sağlığına Kavuştu</a>
-                                </h2>
-
-                                <p class="post-description">8 aylık Reyyan bebeğe, Turgut Özal Tıp Merkezi’nde yapılan ilik nakli başarıyla tamamlandı; bebek şimdi sağlıklı şekilde taburcu edilmek üzere.</p>
-
-                                <div class="post-meta">
-                                    <div class="post-author">
-                                        <img src="../College/assets/img/person/bebek.jpg" alt="" class="img-fluid">
-                                    </div>
-                                    <span class="post-date">May 8, 2025</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div><!-- End post item -->
-
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="400">
-                        <article class="post-item d-flex">
-                            <div class="post-img">
-                                <img src="../College/assets/img/blog/karaciger.jpg" alt="" class="img-fluid" loading="lazy">
-                            </div>
-
-                            <div class="post-content flex-grow-1">
-                                <h2 class="post-title">
-                                    <a href="#"> 5 Karaciğer Nakliyle Guinness Yolunda</a>
-                                </h2>
-
-                                <p class="post-description">Üniversite, aynı anda 5 canlı vericiyle gerçekleştirdiği karaciğer nakilleriyle Guinness Rekorlar Kitabı'na başvurmayı planlıyor — büyük çaplı ve dünya çapında dikkat çekici bir girişim.</p>
-
-                                <div class="post-meta">
-                                    <div class="post-author">
-                                        <img src="../College/assets/img/person/karaciger.jpg" alt="" class="img-fluid">
-                                    </div>
-                                    <span class="post-date">Jun 30, 2025</span>
-                                </div>
-                            </div>
-                        </article>
-                    </div><!-- End post item -->
-
+                            </article>
+                        </div>
+                    }
                 </div>
 
             </div>
+        </section>
 
-        </section><!-- /Recent News Section -->
-       
-
-    </main>
+     </main>
 
    
 

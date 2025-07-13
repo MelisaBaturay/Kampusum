@@ -9,5 +9,6 @@ namespace Kampusum.Models
         {
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<News> Newss { get; set; }
     }
 }

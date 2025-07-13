@@ -46,7 +46,7 @@ namespace Kampusum.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(string email, string password)
+        public async Task<IActionResult> SignIn(string email, string password, string? returnUrl)
         {
             var user = _context.Users.FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
 
@@ -68,6 +68,10 @@ namespace Kampusum.Controllers
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 return RedirectToAction("Starter", "Home");
             }
             else
