@@ -53,6 +53,29 @@
                     <li><a href="../Events/Index">Duyurular ve Etkinlikler</a></li>
                     <li><a href="../Faculty/Index">Kampüs</a></li>
                     <li><a href="../Home/Contact">İletişime Geç</a></li>
+                    <li class="dropdown">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="#"><span>@User.Identity.Name</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li>
+                                    <form action="/Login/Logout" method="post" style="display:inline;">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" style="color: red; border: none; background: none; cursor: pointer;">
+                                            Çıkış Yap
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <a href="#"><span>Profil</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                            <ul>
+                                <li><a href="/Login/Login" style="padding-left: 5px; margin-left: 2px;">Giriş Yap</a></li>
+                            </ul>
+                        }
+                    </li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -378,74 +401,73 @@
 
     </main>
 
+
+
     <footer id="footer" class="footer position-relative light-background">
 
         <div class="container footer-top">
             <div class="row gy-4">
-                <div class="col-lg-4 col-md-6 footer-about">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <span class="sitename">../College</span>
-                    </a>
-                    <div class="footer-contact pt-3">
-                        <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span>info@example.com</span></p>
-                    </div>
-                    <div class="social-links d-flex mt-4">
-                        <a href=""><i class="bi bi-twitter-x"></i></a>
-                        <a href=""><i class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
+                <div class="col-lg-2 col-md-3 footer-about">
+                    <h4> Kampüsümüz</h4>
+                    <p>
+                        İnönü Üniversitesi, Merkez Yerleşke<br />
+                        Elazığ Yolu 10. Km, 44280 <br />
+                        Malatya / Türkiye
+                    </p>
+                    <a href="mailto:genelsekreterlik@inonu.edu.tr?subject=Bilgi">E-Posta Gönder</a>
+                    <p>📞 <a href="tel:+904223770000">0422 377 0000</a></p>
+
+
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Genel Üniversite Bilgileri</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="https://www.inonu.edu.tr/">İnönü Üniversitesi Resmî Web Sitesi</a></li>
+                        <li><a href="https://tanitim.inonu.edu.tr">İnönü Üniversitesi Tanıtım Sayfası</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>Kampüs Olanakları ve Yaşam</h4>
                     <ul>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Product Management</a></li>
-                        <li><a href="#">Marketing</a></li>
-                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="https://www.inonu.edu.tr/totm">Turgut Özal Tıp Merkezi</a></li>
+                        <li><a href="https://kutuphane.inonu.edu.tr">Kütüphane ve Dokümantasyon Daire Başkanlığı</a></li>
+                        <li><a href="https://sporhizmetleri.inonu.edu.tr">Spor Hizmetleri ve Tesisleri</a></li>
+                        <li><a href="https://harita.inonu.edu.tr">Kampüs Ulaşım ve Harita</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Hic solutasetp</h4>
+                    <h4>Öğrenci Bilgi ve Destek Sistemleri</h4>
                     <ul>
-                        <li><a href="#">Molestiae accusamus iure</a></li>
-                        <li><a href="#">Excepturi dignissimos</a></li>
-                        <li><a href="#">Suscipit distinctio</a></li>
-                        <li><a href="#">Dilecta</a></li>
-                        <li><a href="#">Sit quas consectetur</a></li>
+                        <li><a href="https://obs.inonu.edu.tr">OBS – Öğrenci Bilgi Sistemi</a></li>
+                        <li><a href="https://uzem.inonu.edu.tr">UZEM – Uzaktan Eğitim Merkezi</a></li>
+                        <li><a href="https://ebys.inonu.edu.tr">EBYS – Elektronik Belge Yönetim Sistemi</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Nobis illum</h4>
+                    <h4> Sosyal ve Kültürel Hayat</h4>
                     <ul>
-                        <li><a href="#">Ipsam</a></li>
-                        <li><a href="#">Laudantium dolorum</a></li>
-                        <li><a href="#">Dinera</a></li>
-                        <li><a href="#">Trodelas</a></li>
-                        <li><a href="#">Flexo</a></li>
+                        <li><a href="https://www.inonu.edu.tr/">Kültür ve Sosyal İşler Daire Başkanlığı</a></li>
+                        <li><a href="https://www.malatyateknokent.com.tr/">Teknokent & Girişimcilik</a></li>
+                        <li><a href="https://ogrencitopluluklari.inonu.edu.tr/Community/Detail/153d3411-c27c-467a-aca6-20dd290dbabb?utm_source=chatgpt.com">Gönüllülük ve Toplumsal Katkı Merkezi</a></li>
                     </ul>
+                </div>
+
+                <div class="social-links d-flex mt-4">
+                    <a href="http://x.com/inukurumsal"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.facebook.com/inukurumsal"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/inukurumsal/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/inukurumsal/"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.youtube.com/inukurumsal"><i class="bi bi-youtube"></i><
                 </div>
 
             </div>
         </div>
+
+
 
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
@@ -459,6 +481,10 @@
         </div>
 
     </footer>
+
+
+
+
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

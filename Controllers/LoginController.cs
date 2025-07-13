@@ -64,7 +64,7 @@ namespace Kampusum.Controllers
                     return Redirect(returnUrl);
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("EventsDetails", "Events");
             }
             else
             {
@@ -72,6 +72,12 @@ namespace Kampusum.Controllers
                 return View("Login");
             }
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Starter", "Home");
+        }
     }
 }
