@@ -32,8 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\AdminTheme\.DS_Store" />
     <None Include="wwwroot\AdminTheme\AdminTheme\.DS_Store" />
     <None Include="wwwroot\AdminTheme\AdminTheme\PSD\.DS_Store" />
+    <None Include="wwwroot\AdminTheme\PSD\.DS_Store" />
   </ItemGroup>
 
   <ItemGroup>
