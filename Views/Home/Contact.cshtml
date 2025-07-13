@@ -119,8 +119,37 @@
                                     <i class="bi bi-geo-alt"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Location</h4>
-                                    <p>8721 Broadway Avenue, New York, NY 10023</p>
+                                    <h4>Konum</h4>
+                                    <p><strong>Adres:</strong> Üniversite, Malatya Elazığ Yolu 10.KM No:44210, 44000 Battalgazi/Malatya</p>
+
+                                    @* <button id="btnRoute" style="padding:10px 15px; background:#4285F4; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+                                        📍 Yol Tarifi Al
+                                    </button>
+
+                                    <script>
+                                        document.getElementById('btnRoute').addEventListener('click', function() {
+                                          if (navigator.geolocation) {
+                                            navigator.geolocation.getCurrentPosition(
+                                              function(position) {
+                                                const lat = position.coords.latitude;
+                                                const lng = position.coords.longitude;
+                                                const destination = encodeURIComponent('İnönü Üniversitesi, Malatya Elazığ Yolu 10.KM No:44210, 44000 Battalgazi/Malatya');
+
+                                                const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}&travelmode=driving`;
+
+                                                window.open(mapsUrl, '_blank');
+                                              },
+                                              function(error) {
+                                                alert('Konum alınamadı. Lütfen tarayıcı konum izinlerinizi kontrol edin.');
+                                              },
+                                              { timeout: 10000 }  // 10 saniye içinde cevap gelmezse hata verir
+                                            );
+                                          } else {
+                                            alert('Tarayıcınız konum hizmetini desteklemiyor.');
+                                          }
+                                        });
+                                    </script>
+ *@
                                 </div>
                             </div>
 
@@ -129,8 +158,8 @@
                                     <i class="bi bi-envelope"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Email</h4>
-                                    <p>info@examplecompany.com</p>
+                                    <h4>Email Adresi : <h6> genelsekreterlik@inonu.edu.tr </h6> </h4>
+                                    <a href="mailto:genelsekreterlik@inonu.edu.tr?subject=Bilgi">E-Posta Gönder</a>
                                 </div>
                             </div>
 
@@ -139,8 +168,8 @@
                                     <i class="bi bi-telephone"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Call</h4>
-                                    <p>+1 (212) 555-7890</p>
+                                    <h4>Telefon</h4>
+                                    <p>📞 <a href="tel:+904223770000">0422 377 0000</a></p>
                                 </div>
                             </div>
 
@@ -149,49 +178,10 @@
                                     <i class="bi bi-clock"></i>
                                 </div>
                                 <div class="contact-text">
-                                    <h4>Open Hours</h4>
-                                    <p>Monday-Friday: 9AM - 6PM</p>
+                                    <h4>Açılış Saatleri</h4>
+                                    <p>Pazartesi-Cuma: 8AM - 5PM</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
-                            <h3>Get in Touch</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consectetur adipiscing.</p>
-
-                            <form action="forms/contact.php" method="post" class="php-email-form">
-                                <div class="row">
-                                    <div class="col-md-6 form-group">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-                                    </div>
-                                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-                                </div>
-                                <div class="form-group mt-3">
-                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
-                                </div>
-
-                                <div class="my-3">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-
-                                <div class="form-submit">
-                                    <button type="submit">Send Message</button>
-                                    <div class="social-links">
-                                        <a href="#"><i class="bi bi-twitter"></i></a>
-                                        <a href="#"><i class="bi bi-facebook"></i></a>
-                                        <a href="#"><i class="bi bi-instagram"></i></a>
-                                        <a href="https://github.com/MelisaBaturay"><i class="bi bi-linkedin"></i></a>
-                                        <a href="https://github.com/MelisaBaturay"><i class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
