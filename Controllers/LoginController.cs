@@ -25,46 +25,50 @@ namespace Kampusum.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
+            if (!user.UserEmail.EndsWith("edu.tr", StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["ErrorMessage"] = "Sadece .edu.tr uzantılı e-posta adresleri kabul edilir.";
+                return RedirectToAction("Login");
+            }
+
             var checkUser = _context.Users.FirstOrDefault(u => u.UserEmail == user.UserEmail);
-            if (checkUser == null)
+            if (checkUser != null)
             {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                ViewBag.RegisterSuccess = "Kayıt başarılı! Giriş yapabilirsiniz.";
+                TempData["ErrorMessage"] = "Bu e-posta ile kayıtlı bir kullanıcı zaten var.";
+                return RedirectToAction("Login");
             }
-            else
-            {
-                ViewBag.RegisterError = "Bu e-posta ile kayıtlı bir kullanıcı zaten var";
-            }
-            return View("Login");
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Kayıt başarılı! Giriş yapabilirsiniz.";
+            return RedirectToAction("Login");
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(string email, string password, string? returnUrl)
+        public async Task<IActionResult> SignIn(string email, string password)
         {
             var user = _context.Users.FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "E-posta veya şifre hatalı!";
+                return RedirectToAction("Login");
+            }
             if (user != null)
             {
-                // Kullanıcıyı tanımla
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.UserName),
-            new Claim(ClaimTypes.Email, user.UserEmail)
-        };
+{
+    new Claim(ClaimTypes.Name, user.UserName),
+    new Claim(ClaimTypes.Email, user.UserEmail)
+};
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
 
-                // Giriş işlemini gerçekleştir
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                // ReturnUrl varsa oraya yönlendir
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
-
-                return RedirectToAction("EventsDetails", "Events");
+                return RedirectToAction("Starter", "Home");
             }
             else
             {
@@ -72,6 +76,7 @@ namespace Kampusum.Controllers
                 return View("Login");
             }
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
