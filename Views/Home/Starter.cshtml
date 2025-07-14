@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model List<News>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -112,7 +114,7 @@
                             
                         </div>
                         <div class="col-lg-6 hero-media" data-aos="zoom-in" data-aos-delay="1000">
-                            <img src="../College/assets/img/education/inönü.jpg" alt="Education" class="img-fluid main-image" width="1000" height="600">
+                            <img src="https://admin.inonu.edu.tr/servlet/image/ModulePost/2527/25-11-2022_102343609_S2.jpg" alt="Education" class="img-fluid main-image" width="1000" height="600">
                             <div class="image-overlay">
                                 <div class="badge-accredited">
                                     <i class="bi bi-patch-check-fill"></i>
@@ -123,17 +125,12 @@
                     </div>
                 </div>
             </div>
-
-            
-
             <div class="upcoming-event" data-aos="fade-up" data-aos-delay="400">
                 <div class="container">
                     <div class="event-content">
                     
                         <div class="event-info">
                             <h3>Hikayemiz</h3>
-        
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -272,33 +269,39 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row gy-4">
-                    @foreach (var news in Model)
+                    @if (Model != null && Model.Any())
                     {
-                        <div class="col-xl-6" data-aos="fade-up" data-aos-delay="100">
-                            <article class="post-item d-flex">
-                                <div class="post-img">
-                                    <img src="@news.ImagePath" alt="" class="img-fluid" loading="lazy" width="280" height="233">
-                                </div>
-
-                                <div class="post-content flex-grow-1">
-                                    <h2 class="post-title">
-                                        <a href="#">@news.Title</a>
-                                    </h2>
-
-                                    <p class="post-description">@news.Description</p>
-
-                                    <div class="post-meta">
-                                        <div class="post-author">
-                                            <img src="@news.AuthorImagePath" alt="" class="img-fluid" width="280" height="233">
-                                        </div>
-                                        <span class="post-date">@news.Date.ToString("MMM dd, yyyy")</span>
+                        foreach (var news in Model)
+                        {
+                            <div class="col-xl-6" data-aos="fade-up" data-aos-delay="400">
+                                <article class="post-item d-flex">
+                                    <div class="post-img">
+                                        <img src="@news.ImagePath" alt="News Image" class="img-fluid" loading="lazy">
                                     </div>
-                                </div>
-                            </article>
-                        </div>
+
+                                    <div class="post-content flex-grow-1">
+
+                                        <h2 class="post-title">
+                                            <a href="#">@news.Title</a>
+                                        </h2>
+
+                                        <p class="post-description">
+                                            @news.Description
+                                        </p>
+
+                                        <div class="post-meta">
+                                            <span class="post-date">@news.Date.ToString("MMM dd, yyyy")</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-center">Henüz haber eklenmedi.</p>
                     }
                 </div>
-
             </div>
         </section>
 
