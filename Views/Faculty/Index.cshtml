@@ -131,148 +131,246 @@
                             }
                         </script>
                         <div class="swiper-wrapper">
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/eczacılıkfak.png" alt="Central Library" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/eczacılıkfak.png" alt="Eczacılık Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Eczacılık Fakültesi</h4>
-                                        <p> Adres: İnönü Üniversitesi Eczacılık Fakültesi, Kampüs, 44280 Battalgazi/Malatya <br> İletişim <br> Telefon: (0422) 341 12 16</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-book"></i>
-                                                <span>500K+ Books</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-wifi"></i>
-                                                <span>High-Speed WiFi</span>
+                                        <p>Adres: İnönü Üniversitesi Eczacılık Fakültesi, Kampüs, 44280 Battalgazi/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:eczacilik@inonu.edu.tr?subject=Bilgi">eczacilik@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904223411216">0422 341 12 16</a></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.334895,38.443518', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+
+
+                            <script>
+                                function getDirections(destLat, destLng) {
+                                  if (navigator.geolocation) {
+                                    navigator.geolocation.getCurrentPosition(function (position) {
+                                      const userLat = position.coords.latitude;
+                                      const userLng = position.coords.longitude;
+
+                                      const mapsURL = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destLat},${destLng}&travelmode=driving`;
+                                      window.open(mapsURL, '_blank');
+                                    }, function () {
+                                      alert("Konum alınamadı. Lütfen tarayıcınızdan konum iznine izin verin.");
+                                    });
+                                  } else {
+                                    alert("Tarayıcınız konum özelliğini desteklemiyor.");
+                                  }
+                                }
+                            </script>
+
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/eğitimfak.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/eğitimfak.jpg" alt="Eğitim Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
-                                        <h4>Eğitim fakültesi</h4>
-                                        <p> Adres: Adres: Üniversite, 44000 Malatya Merkez/Malatya  <br> İletişim <br>  e-Posta :egitim_dekanlik@inonu.edu.tr <br /> Telefon: 0422 377 4300 <br />  Fax : (422) 377 4476 </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <h4>Eğitim Fakültesi</h4>
+                                        <p>Adres: Üniversite, 44000 Malatya Merkez/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:egitim_dekanlik@inonu.edu.tr?subject=Bilgi">egitim_dekanlik@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904223774300">0422 377 4300</a></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3548,38.3152', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+
+
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/hemşirelikfak.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/hemşirelikfak.jpg" alt="Hemşirelik Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
-                                        <h4>Hemşirelik fakültesi</h4>
-                                        <p>
-                                            Adres: Üniversite, 44000 Battalgazi/Malatya <br /> İletişim <br>  Telefon: (422) 377  3825 <br> E-Posta: hemsirelik@inonu.edu.tr  </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <h4>Hemşirelik Fakültesi</h4>
+                                        <p>Adres: Üniversite, 44000 Battalgazi/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:hemsirelik@inonu.edu.tr?subject=Bilgi">hemsirelik@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904223773825">0422 377 3825</a></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3552,38.3145', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+
+
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/ilahiyatfak.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/ilahiyatfak.jpg" alt="İlahiyat Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>İlahiyat Fakültesi</h4>
-                                        <p> Adres: Üniversite, 44000 Malatya Merkez/Malatya <br /> İletişim <br />  Telefon: (0422)  377  3970 <br /> E-posta: islamveyorum@inonu.edu.tr </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <p>Adres: Üniversite, 44000 Malatya Merkez/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:islamveyorum@inonu.edu.tr?subject=Bilgi">islamveyorum@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904223773970">0422 377 3970</a></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3543,38.3165', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/tıpfak.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/tıpfak.jpg" alt="Tıp Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Tıp Fakültesi</h4>
-                                        <p> Adres: Bulgurlu Mahallesi, Elazığ Yolu 15. Km., 44280 Merkez/Battalgazi/Malatya <br /> İletişim <br> Telefon:(0422) 341 0660 <br /> E-posta: tip@inonu.edu.tr </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <p>Adres: Bulgurlu Mahallesi, Elazığ Yolu 15. Km., 44280 Merkez/Battalgazi/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:tip@inonu.edu.tr?subject=Bilgi">tip@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p>
+                                                    <a href="tel:+904223410660">0422 341 0660</a>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3547,38.3183', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
 
+
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/mühendislikfak.jpg" alt="Student Center" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/mühendislikfak.jpg" alt="Mühendislik Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Mühendislik Fakültesi</h4>
-                                        <p> Adres: İnönü Üniversitesi Mühendislik Fakültesi, 44280 Battalgazi/Malatya <br /> İletişim <br> Telefon: (0422) 377 30 00 <br /> E‑Posta: memet.selcuk@inonu.edu.tr </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cup-hot"></i>
-                                                <span>Food Court</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-controller"></i>
-                                                <button onclick="location.href='@Url.Action("Mühendislik Fakültesi", "Maps")'">Haritada Gör</button>
+                                        <p>Adres: İnönü Üniversitesi Mühendislik Fakültesi, 44280 Battalgazi/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:memet.selcuk@inonu.edu.tr?subject=Bilgi">memet.selcuk@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p>
+                                                    <a href="tel:+904223773000">0422 377 30 00</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3563,38.3129', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -280,25 +378,40 @@
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/dişfak.jpg" alt="Wellness Center" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/dişfak.jpg" alt="Diş Hekimliği Fakültesi" class="img-fluid" loading="lazy">
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Diş Hekimliği Fakültesi</h4>
-                                        <p>Adres:İnönü Üniversitesi Üniversite Mah, Eczacılık Cad. Battalgazi/Malatya, Türkiye <br> İletişim <br> e-Posta :dent@inonu.edu.tr <br /> Telefon :0422 222 05 00 <br />  Fax : 0422 222 06 </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-heart-pulse"></i>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-activity"></i>
-                                                <span>Fitness Classes</span>
+                                        <p>Adres: İnönü Üniversitesi, Üniversite Mah, Eczacılık Cad., 44280 Battalgazi/Malatya</p>
+
+                                        <!-- E-Posta -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:dent@inonu.edu.tr?subject=Bilgi">dent@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+                                        <!-- Telefon -->
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p>
+                                                    <a href="tel:+904222220500">0422 222 05 00</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- Yol Tarifi Butonu -->
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3572,38.3130', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev"></div>
@@ -309,6 +422,8 @@
 
 
 
+
+                <!-- Meslek Yüksekokulları Carousel -->
 
                 <div class="highlights-carousel" data-aos="fade-up" data-aos-delay="200">
                     <div class="section-header">
@@ -339,108 +454,204 @@
                               }
                             }
                         </script>
+
                         <div class="swiper-wrapper">
+                            <!-- 1. Yüksekokul -->
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/adaletmeslekokulu.JPG" alt="Central Library" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/adaletmeslekokulu.JPG" alt="Adalet Meslek Yüksekokulu" class="img-fluid" loading="lazy" />
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
-                                        <h4>Adalet Meslek Yüksekokulu </h4>
-                                        <p> Adres: Otobüs Durağı, Üniversite, İnönü Ünv., 44000  Battalgazi/Malatya <br /> İletişim <br /> Telefon: (0422 ) 377  4651 – (0422)  377  4655 </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-book"></i>
-                                                <span>500K+ Books</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-wifi"></i>
-                                                <span>High-Speed WiFi</span>
+                                        <h4>Adalet Meslek Yüksekokulu</h4>
+                                        <p>Adres: Otobüs Durağı, Üniversite, İnönü Ünv., 44000 Battalgazi/Malatya</p>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:adalet@inonu.edu.tr?subject=Bilgi">adalet@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p>
+                                                    <a href="tel:+904223774651">0422 377 4651</a> –
+                                                    <a href="tel:+904223774655">0422 377 4655</a>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3558,38.3135', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 2. Yüksekokul -->
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/kaleyüksekokulu.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/kaleyüksekokulu.jpg" alt="Kale Turizm ve Otel İşletmeciliği Meslek Yüksekokulu" class="img-fluid" loading="lazy" />
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Kale Turizm ve Otel İşletmeciliği Meslek Yüksekokulu</h4>
-                                        <p> Adres: Düztarla, Sahil Yolu Cad, 44370 Kale/Malatya <br /> İletişim <br /> Telefon: (0422) 861 61 52 <br /> Faks: (0422)  341  1237 <br /> E‑Posta: avesis@inonu.edu.tr   </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <p>Adres: Düztarla, Sahil Yolu Cad, 44370 Kale/Malatya</p>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:avesis@inonu.edu.tr?subject=Bilgi">avesis@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904228616152">(0422) 861 61 52</a></p>
+                                            </div>
+                                        </div>
+
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.397,38.7435', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 3. Yüksekokul -->
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/malatyayüksekokulu.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/malatyayüksekokulu.jpg" alt="Malatya Meslek Yüksekokulu" class="img-fluid" loading="lazy" />
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
                                         <h4>Malatya Meslek Yüksekokulu</h4>
-                                        <p> Adres: İnönü Mahallesi, İnönü Caddesi No: 226, 44070 Yeşilyurt/Malatya <br />  İletişim <br /> Telefon:(0 422)  211  86 77  <br /> E‑Posta: fbs@inonu.edu.tr </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <p>Adres: İnönü Mahallesi, İnönü Caddesi No: 226, 44070 Yeşilyurt/Malatya</p>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:fbs@inonu.edu.tr?subject=Bilgi">fbs@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904222118677">(0422) 211 86 77</a></p>
+                                            </div>
+                                        </div>
+
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3375,38.2545', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 4. Yüksekokul -->
                             <div class="swiper-slide">
                                 <div class="highlight-card">
                                     <div class="card-image">
-                                        <img src="../College/assets/img/education/sağlık.jpg" alt="Wellness Center" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
+                                        <img src="../College/assets/img/education/sağlık.jpg" alt="Sağlık Hizmetleri Meslek Yüksekokulu" class="img-fluid" loading="lazy" />
+                                        <div class="image-overlay"></div>
                                     </div>
                                     <div class="card-body">
-                                        <h4> Sağlık Hizmetleri Meslek Yüksekokulu</h4>
-                                        <p> Adres: İnönü Üniversitesi Merkez Kampüs, Hasbi Sokak No: 6/2, Üniversite Mahallesi, 44280 Battalgazi / Malatya <br /> İletişim <br /> Telefon: (0 422)  341  00 51 <br /> E‑posta: dergi.shmyo@inonu.edu.tr </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-heart-pulse"></i>
-                                                <span>Health Services</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-activity"></i>
-                                                <span>Fitness Classes</span>
+                                        <h4>Sağlık Hizmetleri Meslek Yüksekokulu</h4>
+                                        <p>Adres: İnönü Üniversitesi Merkez Kampüs, Hasbi Sokak No: 6/2, Üniversite Mahallesi, 44280 Battalgazi / Malatya</p>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>E-posta Adresi</h4>
+                                                <p><a href="mailto:dergi.shmyo@inonu.edu.tr?subject=Bilgi">dergi.shmyo@inonu.edu.tr</a></p>
                                             </div>
                                         </div>
+
+                                        <div class="contact-card">
+                                            <div class="contact-text">
+                                                <h4>Telefon</h4>
+                                                <p><a href="tel:+904223410051">(0422) 341 00 51</a></p>
+                                            </div>
+                                        </div>
+
+                                        <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3575,38.3128', '_blank')"
+                                                style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                            📍 Yol Tarifi
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Swiper pagination ve butonlar -->
                         <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev meslek-swiper-button-prev"></div>
+                        <div class="swiper-button-next meslek-swiper-button-next"></div>
                     </div>
                 </div>
+
+                <style>
+                    /* Slider container konumlandırması */
+                    .campus-slider {
+                        position: relative;
+                    }
+
+                    /* Butonlar */
+                    .meslek-swiper-button-prev,
+                    .meslek-swiper-button-next {
+                        position: absolute;
+                        top: 50%;
+                        width: 40px; /* Buton biraz daha büyük */
+                        height: 40px;
+                        background-color: rgba(0, 123, 255, 0.9);
+                        border-radius: 50%;
+                        color: white;
+                        z-index: 10;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        user-select: none;
+                        transform: translateY(-50%);
+                        opacity: 1; /* Her zaman görünür */
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .meslek-swiper-button-prev {
+                        left: 10px;
+                    }
+
+                    .meslek-swiper-button-next {
+                        right: 10px;
+                    }
+
+                        /* Ok işaretleri */
+                        .meslek-swiper-button-prev::after,
+                        .meslek-swiper-button-next::after {
+                            font-size: 28px; /* Ok daha büyük */
+                            color: white;
+                            font-weight: bold;
+                            user-select: none;
+                        }
+
+                        /* Hoverda arka plan koyulaşır */
+                        .meslek-swiper-button-prev:hover,
+                        .meslek-swiper-button-next:hover {
+                            background-color: rgba(0, 123, 255, 1);
+                        }
+                </style>
+
+               
+
 
 
 
@@ -475,105 +686,124 @@
                             }
                         </script>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="highlight-card">
-                                    <div class="card-image">
-                                        <img src="../College/assets/img/education/kantin.jpg" alt="Central Library" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4>Tıp Fakültesi Kantin Cafe</h4>
-                                        <p> Adres: Üzümlü, İnönü Ünv., 44000 Malatya Merkez/Malatya</p>
-                                        <p> Açılış: 8.00 <br /> Kapanış 22.00</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-book"></i>
-                                                <span>500K+ Books</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-wifi"></i>
-                                                <span>High-Speed WiFi</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="swiper-slide">
-                                <div class="highlight-card">
-                                    <div class="card-image">
-                                        <img src="../College/assets/img/education/kafetarya.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
+                                <div class="swiper-slide">
+                                    <div class="highlight-card">
+                                        <div class="card-image">
+                                            <img src="../College/assets/img/education/kantin.jpg" alt="Tıp Fakültesi Kantin Cafe" class="img-fluid" loading="lazy">
+                                            <div class="image-overlay"></div>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4>Kafetarya</h4>
-                                        <p> Adres: İnönü Üniversitesi Merkez Kampüsü Yaşam Merkezi Restoranı Battalgazi, Üniversite Mahallesi, Malatya</p>
-                                        <p> Açılış: 8.00 <br /> Kapanış 18.00</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="card-body">
+                                            <h4>Tıp Fakültesi Kantin Cafe</h4>
+                                            <p>Adres: Üzümlü, İnönü Ünv., 44000 Malatya Merkez/Malatya</p>
+                                            <p>Açılış: 08.00<br />Kapanış: 22.00</p>
 
-                            <div class="swiper-slide">
-                                <div class="highlight-card">
-                                    <div class="card-image">
-                                        <img src="../College/assets/img/education/mania.webp" alt="Student Center" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4>Cafe Mania</h4>
-                                        <p> Adres: İnönü, İnönü Cd. No:196, 44070 Malatya Merkez/Malatya</p>
-                                        <p> Açılış: 8.00 <br /> Kapanış 22.00</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cup-hot"></i>
-                                                <span>Food Court</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-controller"></i>
-                                                <span>Game Lounge</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3615,38.3085', '_blank')"
+                                                    style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
 
-                            <div class="swiper-slide">
-                                <div class="highlight-card">
-                                    <div class="card-image">
-                                        <img src="../College/assets/img/education/kortkafe.jpg" alt="Wellness Center" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4>İnönü Üniversitesi Kort Kafe</h4>
-                                        <p> Adres: Bulgurlu Mahallesi, Battalgazi, Malatya </p>
-                                        <p> Açılış: 8.00 <br /> Kapanış 22.00</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-heart-pulse"></i>
-                                                <span>Health Services</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-activity"></i>
-                                                <span>Fitness Classes</span>
+                                            <div class="card-stats" style="margin-top: 15px;">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+                                <div class="swiper-slide">
+                                    <div class="highlight-card">
+                                        <div class="card-image">
+                                            <img src="../College/assets/img/education/kafetarya.jpg" alt="Kafetarya" class="img-fluid" loading="lazy">
+                                            <div class="image-overlay"></div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4>Kafetarya</h4>
+                                            <p>Adres: İnönü Üniversitesi Merkez Kampüsü Yaşam Merkezi Restoranı Battalgazi, Üniversite Mahallesi, Malatya</p>
+                                            <p>Açılış: 08.00<br />Kapanış: 18.00</p>
+
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3379,38.4354', '_blank')"
+                                                    style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+                                <div class="swiper-slide">
+                                    <div class="highlight-card">
+                                        <div class="card-image">
+                                            <img src="../College/assets/img/education/mania.webp" alt="Cafe Mania" class="img-fluid" loading="lazy">
+                                            <div class="image-overlay"></div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4>Cafe Mania</h4>
+                                            <p>Adres: İnönü Cd. No: 196, 44070 Malatya Merkez/Malatya</p>
+                                            <p>Açılış: 08.00<br> Kapanış: 22.00</p>
+
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3385,38.3190', '_blank')"
+                                                    style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                      const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                      window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+                                <div class="swiper-slide">
+                                    <div class="highlight-card">
+                                        <div class="card-image">
+                                            <img src="../College/assets/img/education/kortkafe.jpg" alt="İnönü Üniversitesi Kort Kafe" class="img-fluid" loading="lazy">
+                                            <div class="image-overlay"></div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4>İnönü Üniversitesi Kort Kafe</h4>
+                                            <p>Adres: Bulgurlu Mahallesi, Battalgazi, Malatya</p>
+                                            <p>Açılış: 08.00<br> Kapanış: 22.00</p>
+
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.332353,38.445541', '_blank')"
+                                                    style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                      const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                      window.open(url, '_blank');
+                                    }
+                                </script>
+
+
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev"></div>
@@ -612,30 +842,36 @@
                             }
                         </script>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="highlight-card">
-                                    <div class="card-image">
-                                        <img src="../College/assets/img/education/kütüphane.jpg" alt="Central Library" class="img-fluid" loading="lazy">
-                                        <div class="image-overlay">
+                                <div class="swiper-slide">
+                                    <div class="highlight-card">
+                                        <div class="card-image">
+                                            <img src="../College/assets/img/education/kütüphane.jpg" alt="İnönü Üniversitesi Kütüphanesi" class="img-fluid" loading="lazy">
+                                            <div class="image-overlay"></div>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h4>İnönü Üniversitesi Kütüphanesi</h4>
-                                        <p> Adres:Üzümlü, İnönü Ünv., 44000 Malatya Merkez/Malatya </p>
-                                        <p> Pazartesi-Cuma: <br /> 08.00-17.00 <br /> Cumartesi-Pazar: <br /> 10.00-18.00</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-book"></i>
-                                                <span>500K+ Books</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-wifi"></i>
-                                                <span>High-Speed WiFi</span>
-                                            </div>
+                                        <div class="card-body">
+                                            <h4>İnönü Üniversitesi Kütüphanesi</h4>
+                                            <p>Adres: Üzümlü, İnönü Ünv., 44000 Malatya Merkez/Malatya</p>
+                                            <p>
+                                                Pazartesi-Cuma:<br>08.00-17.00<br>
+                                                Cumartesi-Pazar:<br>10.00-18.00
+                                            </p>
+
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3534,38.3122', '_blank')"
+                                                    style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
 
 
 
@@ -684,17 +920,13 @@
                                     </div>
                                     <div class="card-body">
                                         <h4>Acil Yardım Topluluğu</h4>
-                                            <p> Başkan : Abdulselam YAKUT <br /> İletişim: <br /> mail: acildurum@gmail.com </p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-book"></i>
-                                                <span>500K+ Books</span>
+                                            <h6> Başkan : Abdulselam YAKUT</h6>
+                                            <div class="contact-card">
+                                                <div class="contact-text">
+                                                    <h4>E-posta Adresi</h4>
+                                                    <p><a href="mailto:cildurum@gmail.com?subject=Bilgi">cildurum@gmail.com</a></p>
+                                                </div>
                                             </div>
-                                            <div class="stat">
-                                                <i class="bi bi-wifi"></i>
-                                                <span>High-Speed WiFi</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -706,20 +938,16 @@
                                         <div class="image-overlay">
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h4>Bakış Açısı Topluluğu </h4>
-                                        <p> Başkan: Atif Er <br /> İletişim <br /> mail: bakisacisi@gmail.com</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cpu"></i>
-                                                <span>AI Labs</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-gear"></i>
-                                                <span>Maker Space</span>
+                                        <div class="card-body">
+                                            <h4>Bakış Açısı Topluluğu</h4>
+                                            <h6> Başkan :Atif Er </h6>
+                                            <div class="contact-card">
+                                                <div class="contact-text">
+                                                    <h4>E-posta Adresi</h4>
+                                                    <p><a href="mailto:bakisacisi@gmail.com?subject=Bilgi">bakisacisi@gmail.com</a></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -730,20 +958,16 @@
                                         <div class="image-overlay">
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h4>Beslenme ve Diyetetik Topluluğu</h4>
-                                        <p> Başkan: Zeynep Minel ÖZEL <br> İletişim <br /> mail: beslenmediyetetikægmail.com</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-cup-hot"></i>
-                                                <span>Food Court</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-controller"></i>
-                                                <span>Game Lounge</span>
+                                        <div class="card-body">
+                                            <h4>Beslenme ve Diyetetik Topluluğu</h4>
+                                            <h6> Başkan :Zeynep Minel ÖZEL </h6>
+                                            <div class="contact-card">
+                                                <div class="contact-text">
+                                                    <h4>E-posta Adresi</h4>
+                                                    <p><a href="mailto:beslenmediyetetik@gmail.com?subject=Bilgi">beslenmediyetetik@gmail.com</a></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -754,20 +978,16 @@
                                         <div class="image-overlay">
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h4>Geliştirici Öğrenciler Topluluğu</h4>
-                                        <p> Başkan: Mehmet Akif SALMAN <br /> İletişim <br /> mail: gdsc@mail.com</p>
-                                        <div class="card-stats">
-                                            <div class="stat">
-                                                <i class="bi bi-heart-pulse"></i>
-                                                <span>Health Services</span>
-                                            </div>
-                                            <div class="stat">
-                                                <i class="bi bi-activity"></i>
-                                                <span>Fitness Classes</span>
+                                        <div class="card-body">
+                                            <h4>Geliştirici Öğrenciler Topluluğu</h4>
+                                            <h6> Başkan :  Mehmet Akif SALMAN </h6>
+                                            <div class="contact-card">
+                                                <div class="contact-text">
+                                                    <h4>E-posta Adresi</h4>
+                                                    <p><a href="mailto:gdsc@mail.com?subject=Bilgi">gdsc@mail.com</a></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -807,175 +1027,254 @@
                                 }
                             </script>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/arapgiryurt.jpg" alt="Central Library" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/arapgiryurt.jpg" alt="Arapgir KYK Kız ve Erkek Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Arapgir Kyk Kız Ve Erkek Öğrenci Yurdu</h4>
-                                            <p> Adres: YUKARI YENİCE MAH. MALATYA CAD. NO:3 <br> Tel: <br> (0422) 811 2425</p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-book"></i>
-                                                    <span>500K+ Books</span>
+                                            <div class="card-body">
+                                                <h4>Arapgir KYK Kız ve Erkek Öğrenci Yurdu</h4>
+                                                <p>Adres: Yukarıyenice, 2F8P+P9, 44800 Arapgir/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904228112425">(0422) 811 24 25</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-wifi"></i>
-                                                    <span>High-Speed WiFi</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.2358,38.2579', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+ 
 
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/hacıhafizeyurt.jpg" alt="Innovation Hub" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/hacıhafizeyurt.jpg" alt="Malatya Hacı Hafize Özal KYK Kız Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Malatya Hacı Hafize Özal Kyk Kız Öğrenci Yurdu</h4>
-                                            <p> Adres: BULGURLU MH. KÖŞKÜM SOKAK. NO:6/5 BATTALGAZİ/MALATYA <br> Tel: (0422) 341 0508</p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-cpu"></i>
-                                                    <span>AI Labs</span>
+                                            <div class="card-body">
+                                                <h4>Malatya Hacı Hafize Özal KYK Kız Öğrenci Yurdu</h4>
+                                                <p>Adres: Çamurlu, 44000 Battalgazi/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904223410508">(0422) 341 0508</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-gear"></i>
-                                                    <span>Maker Space</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3572,38.3140', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/battalgaziyurt.jpg" alt="Student Center" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/battalgaziyurt.jpg" alt="Battalgazi KYK Kız Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Battalgazi Kyk Kız Öğrenci Yurdu</h4>
-                                            <p> Adres: Bulgurlu Mh. Kanyon Cd. No:39/5 Battalgazi MALATYA <br> Tel: <br> (0422) 311 1145</p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-cup-hot"></i>
-                                                    <span>Food Court</span>
+                                            <div class="card-body">
+                                                <h4>Battalgazi KYK Kız Öğrenci Yurdu</h4>
+                                                <p>Adres: Bulgurlu, Kanyon Caddesi No:39/5, 44100 Battalgazi/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904223111145">(0422) 311 1145</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-controller"></i>
-                                                    <span>Game Lounge</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3580,38.3130', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/eşrefbitlisyurt.jpg" alt="Wellness Center" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/eşrefbitlisyurt.jpg" alt="Eşref Bitlis KYK Erkek Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Eşref Bitlis Kyk Erkek Öğrenci Yurdu</h4>
-                                            <p> Adres: Bulgurlu Mh. Maksan Karşısı Battalgazi / MALATYA <br> Tel: <br> (0422) 502 0994 </p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-heart-pulse"></i>
-                                                    <span>Health Services</span>
+                                            <div class="card-body">
+                                                <h4>Eşref Bitlis KYK Erkek Öğrenci Yurdu</h4>
+                                                <p>Adres: Bulgurlu, 44000 Battalgazi/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904225020994">(0422) 502 0994</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-activity"></i>
-                                                    <span>Fitness Classes</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3578,38.3150', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/beydağıyurt.jpg" alt="Student Center" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/beydağıyurt.jpg" alt="Beydağı KYK Erkek Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Beydağı Kyk Erkek Öğrenci Yurdu</h4>
-                                            <p>Adres: ORDUZU MAH. KANYON CAD. ELAZIĞ YOLU 1. KM NO:28 BATTALGAZİ MALATYA <br> Tel: <br> (0422) 371 1671 </p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-cup-hot"></i>
-                                                    <span>Food Court</span>
+                                            <div class="card-body">
+                                                <h4>Beydağı KYK Erkek Öğrenci Yurdu</h4>
+                                                <p>Adres: Çöşnük, 44000 Battalgazi/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904223711671">(0422) 371 1671</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-controller"></i>
-                                                    <span>Game Lounge</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3590,38.3000', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <div class="highlight-card">
-                                        <div class="card-image">
-                                            <img src="../College/assets/img/education/somoncubabayurt.jpg" alt="Student Center" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
+
+                                    <div class="swiper-slide">
+                                        <div class="highlight-card">
+                                            <div class="card-image">
+                                                <img src="../College/assets/img/education/somoncubabayurt.jpg" alt="Somuncu Baba KYK Kız Öğrenci Yurdu" class="img-fluid" loading="lazy">
+                                                <div class="image-overlay"></div>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4>Somuncu Baba Kyk Kız Öğrenci Yurdu</h4>
-                                            <p> Adres:A - B Blok Adres : İNÖNÜ MAHALLESİ BUHARA BULVARI ERTUĞRUL SOKAK NO:5/2 YEŞİLYURT / MALATYA<br> Tel: <br> (0422) 211 2415</p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-cup-hot"></i>
-                                                    <span>Food Court</span>
+                                            <div class="card-body">
+                                                <h4>Somuncu Baba KYK Kız Öğrenci Yurdu</h4>
+                                                <p>Adres: İnönü, Buhara Bulvarı 254-1, 44070 Malatya Merkez/Malatya</p>
+
+                                                <!-- Telefon -->
+                                                <div class="contact-card">
+                                                    <div class="contact-text">
+                                                        <h4>Telefon</h4>
+                                                        <p><a href="tel:+904222112415">(0422) 211 2415</a></p>
+                                                    </div>
                                                 </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-controller"></i>
-                                                    <span>Game Lounge</span>
-                                                </div>
+
+                                                <!-- Yol Tarifi Butonu -->
+                                                <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=38.3238,38.2440', '_blank')"
+                                                        style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                    📍 Yol Tarifi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
 
 
                                 <div class="swiper-slide">
                                     <div class="highlight-card">
                                         <div class="card-image">
                                             <img src="../College/assets/img/education/malatyakızyurt.jpg" alt="Student Center" class="img-fluid" loading="lazy">
-                                            <div class="image-overlay">
-                                            </div>
+                                            <div class="image-overlay"></div>
                                         </div>
                                         <div class="card-body">
-                                            <h4>Malatya Kyk Kız Öğrenci Yurdu</h4>
-                                            <p> Adres:ADRES NO:25173948 BULGURLU M. KÖŞKÜM SOK.NO:6/6 NO:6 BATTALGAZİ MALATYA <br> Tel: <br> (0422) 341 0167</p>
-                                            <div class="card-stats">
-                                                <div class="stat">
-                                                    <i class="bi bi-cup-hot"></i>
-                                                    <span>Food Court</span>
-                                                </div>
-                                                <div class="stat">
-                                                    <i class="bi bi-controller"></i>
-                                                    <span>Game Lounge</span>
+                                            <h4>Malatya KYK Kız Öğrenci Yurdu</h4>
+                                            <p>Adres: Bulgurlu Mh. Köşküm Sok. No:6/6 Battalgazi Malatya</p>
+
+                                            <!-- Telefon -->
+                                            <div class="contact-card">
+                                                <div class="contact-text">
+                                                    <h4>Telefon</h4>
+                                                    <p><a href="tel:+904223410167">(0422) 341 0167</a></p>
                                                 </div>
                                             </div>
+
+                                            <!-- Yol Tarifi Butonu -->
+                                            <button onclick="getDirections(38.3570, 38.3145)" style="margin-top: 10px; padding: 8px 12px; border:none; background-color:#007bff; color:white; border-radius:4px; cursor:pointer;">
+                                                📍 Yol Tarifi
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                    function getDirections(lat, lng) {
+                                        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                                        window.open(url, '_blank');
+                                    }
+                                </script>
+
 
 
 
@@ -1002,36 +1301,17 @@
                                         <i class="bi bi-grid"></i>
                                         <span>Tüm Konumlar</span>
                                     </div>
-                                    <div class="category-filter" data-category="academic">
-                                        <i class="bi bi-book"></i>
-                                        <span>Akedemik</span>
-                                    </div>
-                                    <div class="category-filter" data-category="dining">
-                                        <i class="bi bi-cup-hot"></i>
-                                        <span>Yemek</span>
-                                    </div>
-                                    <div class="category-filter" data-category="parking">
-                                        <i class="bi bi-car-front"></i>
-                                        <span>Otopark</span>
-                                    </div>
-                                    <div class="category-filter" data-category="recreation">
-                                        <i class="bi bi-activity"></i>
-                                        <span>Duraklar</span>
-                                    </div>
+                                            <div class="category-filter" data-category="academic" style="cursor:pointer;"
+                                                 onclick="window.location.href='https://www.inonu.edu.tr/akademik'">
+                                                <i class="bi bi-book"></i>
+                                                <span>Akademik</span>
+                                            </div>
                                 </div>
 
                                 <div class="map-actions">
                                     <a href="#" class="action-link">
                                         <i class="bi bi-download"></i> 
                                         Kampüs Haritasını İndirin
-                                    </a>
-                                    <a href="#" class="action-link">
-                                        <i class="bi bi-phone"></i>
-                                            Kampüs Servis Bilgileri
-                                    </a>
-                                    <a href="#" class="action-link">
-                                        <i class="bi bi-car-front"></i>
-                                            Park Bilgileri
                                     </a>
                                 </div>
                             </div>
