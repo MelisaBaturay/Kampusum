@@ -1,4 +1,5 @@
 using Kampusum.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +11,39 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 
+//builder.Services.ConfigureApplicationCookie(options =>
+//{
+//    options.AccessDeniedPath = "/Account/AccessDenied";
+//});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
+
 builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies", options =>
+.AddCookie("Cookies", options =>
+{
+    options.LoginPath = "/Login/Login";
+    options.Events = new CookieAuthenticationEvents
     {
-        options.LoginPath = "/Login/Login";
-    });
+        OnRedirectToLogin = context =>
+        {
+            var path = context.Request.Path.ToString().ToLower();
+
+            if (path.Contains("/admin") || path.Contains("/news/create") || path.Contains("/events/create"))
+            {
+                context.Response.Redirect("/Admin/Login?ReturnUrl=" + Uri.EscapeDataString(context.Request.Path));
+            }
+            else
+            {
+                context.Response.Redirect("/Login/Login?ReturnUrl=" + Uri.EscapeDataString(context.Request.Path));
+            }
+
+            return Task.CompletedTask;
+        }
+    };
+});
 
 builder.Services.AddScoped<EmailService>(sp => new EmailService(
     smtpHost: builder.Configuration["EmailSettings:SmtpHost"],

@@ -10,5 +10,9 @@ namespace Kampusum.Models
         }
         public DbSet<User> Users { get; set; }
         public DbSet<News> Newss { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventSchedule> EventSchedules { get; set; }
+        public DbSet<EventRegistration> EventRegistrations { get; set; }
+        public DbSet<EventCard> EventCards { get; set; }
     }
 }

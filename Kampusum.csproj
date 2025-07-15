@@ -15,10 +15,13 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\Contact.cs" />
+    <Compile Remove="Controllers\NewsController..cs" />
+    <Compile Remove="Views\List.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Controllers\Contact.razor" />
+    <Content Remove="Views\List.cshtml" />
     <Content Remove="wwwroot\College\assets\img\blog\blog-post-3.webp" />
     <Content Remove="wwwroot\College\assets\img\blog\klinik.htm" />
     <Content Remove="wwwroot\College\assets\img\education\activities-1.webp" />

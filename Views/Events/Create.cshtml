@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model Kampusum.Models.Event
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Form elements </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Etkinlik Ekle</h4>
+                        <p class="card-description"> Yeni etkinlik bilgilerini girin </p>
+
+                        <form asp-action="Create" asp-controller="Events" method="post" enctype="multipart/form-data" class="forms-sample">
+                            <!-- Etkinlik Bilgileri -->
+                            <div class="form-group">
+                                <label asp-for="Title">Etkinlik Başlığı</label>
+                                <input asp-for="Title" class="form-control" placeholder="Etkinlik Başlığı" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Description">Açıklama</label>
+                                <textarea asp-for="Description" class="form-control" rows="4" placeholder="Açıklama" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ImagePath">Görsel URL</label>
+                                <input asp-for="ImagePath" class="form-control" placeholder="Görsel URL" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Date">Tarih</label>
+                                <input asp-for="Date" class="form-control" type="date" placeholder="Tarih" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="StartTime">Başlangıç Saati</label>
+                                <input asp-for="StartTime" class="form-control" type="time" placeholder="Başlangıç Saati" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="EndTime">Bitiş Saati</label>
+                                <input asp-for="EndTime" class="form-control" type="time" placeholder="Bitiş Saati" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Location">Lokasyon</label>
+                                <input asp-for="Location" class="form-control" placeholder="Lokasyon" required />
+                            </div>
+
+                            <hr />
+                            <h5>Organizatör Bilgileri</h5>
+
+                            <div class="form-group">
+                                <label asp-for="OrganizerName">Ad Soyad</label>
+                                <input asp-for="OrganizerName" class="form-control" placeholder="Ad Soyad" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OrganizerTitle">Unvan</label>
+                                <input asp-for="OrganizerTitle" class="form-control" placeholder="Unvan" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OrganizerEmail">Email</label>
+                                <input asp-for="OrganizerEmail" class="form-control" placeholder="Email" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OrganizerPhone">Telefon</label>
+                                <input asp-for="OrganizerPhone" class="form-control" placeholder="Telefon" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OrganizerImagePath">Profil Görseli (URL)</label>
+                                <input asp-for="OrganizerImagePath" class="form-control" placeholder="Profil Görseli (URL)" required />
+                            </div>
+
+                            <hr />
+                            <h5>Etkinlik Takvimi</h5>
+                            <div id="scheduleContainer">
+                                <!-- İlk satır -->
+                                <div class="schedule-item border p-3 mb-3">
+                                    <div class="form-group">
+                                        <label>Başlangıç Saati</label>
+                                        <input name="Schedules[0].StartTime" type="time" class="form-control" placeholder="Başlangıç Saati" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bitiş Saati</label>
+                                        <input name="Schedules[0].EndTime" type="time" class="form-control" placeholder="Bitiş Saati" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Başlık</label>
+                                        <input name="Schedules[0].Title" type="text" class="form-control" placeholder="Başlık" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Açıklama</label>
+                                        <textarea name="Schedules[0].Description" rows="2" class="form-control" placeholder="Açıklama" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-gradient-primary mr-2" onclick="addSchedule()">+ Takvim Satırı Ekle</button>
+
+                            <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                            <a href="/Event/List" class="btn btn-light">Vazgeç</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script>
+                let scheduleIndex = 1;
+                function addSchedule() {
+                    const container = document.getElementById("scheduleContainer");
+
+                    const html = `
+                    <div class="schedule-item border p-3 mb-3">
+                        <div class="form-group">
+                            <label>Başlangıç Saati</label>
+                            <input name="Schedules[${scheduleIndex}].StartTime" type="time" class="form-control" placeholder="Başlangıç Saati" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Bitiş Saati</label>
+                            <input name="Schedules[${scheduleIndex}].EndTime" type="time" class="form-control" placeholder="Bitiş Saati" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Başlık</label>
+                            <input name="Schedules[${scheduleIndex}].Title" type="text" class="form-control" placeholder="Başlık" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea name="Schedules[${scheduleIndex}].Description" rows="2" class="form-control" placeholder="Açıklama" required></textarea>
+                        </div>
+                    </div>`;
+                    container.insertAdjacentHTML("beforeend", html);
+                    scheduleIndex++;
+                }
+            </script>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
