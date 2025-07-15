@@ -12,13 +12,14 @@ namespace Kampusum.Controllers
         {
             _context = context;
         }
-        [Authorize]
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         public IActionResult Create(News news)
         {
