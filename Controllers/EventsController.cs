@@ -8,9 +8,11 @@ namespace Kampusum.Controllers
     public class EventsController : Controller
     {
         private readonly Context _context;
-        public EventsController(Context context)
+        private readonly EmailService _emailService;
+        public EventsController(Context context, EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
         public IActionResult Index(string search)
         {
@@ -40,7 +42,13 @@ namespace Kampusum.Controllers
             if (eventDetail == null)
                 return NotFound();
 
-            return View(eventDetail);
+            var viewModel = new EventDetailsViewModel
+            {
+                Event = eventDetail,
+                Registration = new EventRegistration { EventId = id }
+            };
+
+            return View(viewModel);
         }
 
         [Authorize(Policy = "AdminOnly")]
@@ -97,6 +105,56 @@ namespace Kampusum.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("Delete");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Register(EventRegistration registration)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.EventRegistrations.Add(registration);
+                _context.SaveChanges();
+
+                // Etkinlik bilgilerini çek
+                var eventDetail = _context.Events.FirstOrDefault(e => e.EventId == registration.EventId);
+
+                // Mail içeriği hazırla
+                var subject = "Etkinlik Kaydınız Başarılı!";
+                var body = $@"
+            <h2>Etkinlik Kaydınız Başarıyla Tamamlandı</h2>
+            <p>Etkinlik: <b>{eventDetail.Title}</b></p>
+            <p>Açıklama: {eventDetail.Description}</p>
+            <p>Tarih: {eventDetail.Date:dd.MM.yyyy}</p>
+            <p>Saat: {eventDetail.StartTime.ToString(@"hh\:mm")} - {eventDetail.EndTime.ToString(@"hh\:mm")}</p>            
+            <p>Yer: {eventDetail.Location}</p>
+            <br>
+            <p>Katılımınız için teşekkürler!</p>
+        ";
+
+                // Mail gönder
+                await _emailService.SendEmailAsync(registration.Email, subject, body);
+
+                TempData["SuccessMessage"] = "Kayıt başarılı! Bilgileriniz e-posta adresinize gönderildi.";
+                return RedirectToAction("EventsDetails", new { id = registration.EventId });
+            }
+
+            TempData["ErrorMessage"] = "Kayıt başarısız. Lütfen formu kontrol edin.";
+
+            var eventDetail2 = _context.Events
+                .Include(e => e.Schedules)
+                .FirstOrDefault(e => e.EventId == registration.EventId);
+
+            if (eventDetail2 == null)
+                return NotFound();
+
+            var viewModel = new EventDetailsViewModel
+            {
+                Event = eventDetail2,
+                Registration = registration
+            };
+
+            return View("EventsDetails", viewModel);
         }
     }
 }

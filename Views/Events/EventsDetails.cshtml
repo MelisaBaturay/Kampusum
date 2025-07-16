@@ -1,4 +1,4 @@
-﻿@model Kampusum.Models.Event
+﻿@model Kampusum.Models.EventDetailsViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,14 +48,13 @@
                 <!-- <img src="/College/assets/img/logo.webp" alt=""> -->
                 <h1 class="sitename">Kampüsüm</h1>
             </a>
+
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="../Home/Starter" class="active">Ana Sayfa</a></li>
-                    <li><a href="../Events/Index">Etkinlikler</a></li>
-                    <li><a href="../Announcement/Announcement">Duyurular</a></li>
-                    <li><a href="../Faculty/Index">Kampüs</a></li>
-                    <li><a href="../Home/StudentLife">Öğrenci Hayatı</a></li>
-                    <li><a href="../Home/Contact">İletişime Geç</a></li>
+                    <li><a href="/Home/Starter" class="active">Home</a></li>
+                    <li><a href="/Events/Index">Duyurular ve Etkinlikler</a></li>
+                    <li><a href="/Faculty/Index">Kampüs</a></li>
+                    <li><a href="/Home/Contact">İletişime Geç</a></li>
                     <li class="dropdown">
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -82,6 +81,7 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
+
         </div>
     </header>
 
@@ -106,7 +106,7 @@
                     <!-- Sol İçerik -->
                     <div class="col-lg-8">
                         <div class="event-image mb-4" data-aos="fade-up">
-                            <img src="@Model.ImagePath" alt="Event" class="img-fluid rounded" />
+                            <img src="@Model.Event.ImagePath" alt="Event" class="img-fluid rounded" />
                         </div>
 
                         <div class="event-meta mb-4" data-aos="fade-up" data-aos-delay="100">
@@ -114,33 +114,33 @@
                                 <div class="col-md-4">
                                     <div class="meta-item">
                                         <i class="bi bi-calendar-date"></i>
-                                        <span>@Model.Date.ToString("dd.MM.yyyy")</span>
+                                        <span>@Model.Event.Date.ToString("dd.MM.yyyy")</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="meta-item">
                                         <i class="bi bi-clock"></i>
-                                        <span>@Model.StartTime.ToString(@"hh\:mm") - @Model.EndTime.ToString(@"hh\:mm")</span>
+                                        <span>@Model.Event.StartTime.ToString(@"hh\:mm") - @Model.Event.EndTime.ToString(@"hh\:mm")</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="meta-item">
                                         <i class="bi bi-geo-alt"></i>
-                                        <span>@Model.Location</span>
+                                        <span>@Model.Event.Location</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="event-content" data-aos="fade-up" data-aos-delay="200">
-                            <h2>@Model.Title</h2>
-                            <p>@Model.Description</p>
+                            <h2>@Model.Event.Title</h2>
+                            <p>@Model.Event.Description</p>
 
                             <h3 class="mt-4">Etkinlik Programı</h3>
                             <div class="schedule-table">
-                                @if (Model.Schedules != null && Model.Schedules.Any())
+                                @if (Model.Event.Schedules != null && Model.Event.Schedules.Any())
                                 {
-                                    foreach (var item in Model.Schedules)
+                                    foreach (var item in Model.Event.Schedules)
                                     {
                                         <div class="schedule-row">
                                             <div class="schedule-time">@item.StartTime.ToString(@"hh\:mm") - @item.EndTime.ToString(@"hh\:mm")</div>
@@ -161,19 +161,40 @@
                             <!-- Kayıt Formu -->
                             <div class="sidebar-widget registration-form" data-aos="fade-left" data-aos-delay="200">
                                 <h3>Bu Etkinliğe kaydolun</h3>
-                                <form asp-action="Register" asp-controller="Event" method="post">
-                                    <input type="hidden" name="EventId" value="@Model.EventId" />
+                                @if (TempData["SuccessMessage"] != null)
+                                {
+                                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                                }
+                                @if (TempData["ErrorMessage"] != null)
+                                {
+                                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                }
+                                @if (ViewBag.ModelStateErrors != null)
+                                {
+                                    <ul class="alert alert-danger">
+                                        @foreach (var err in ViewBag.ModelStateErrors)
+                                        {
+                                            <li>@err</li>
+                                        }
+                                    </ul>
+                                }
+                                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                                <form asp-action="Register" asp-controller="Events" method="post">
+                                    <input type="hidden" name="EventId" value="@Model.Registration.EventId" />
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Ad Soyad</label>
-                                        <input type="text" name="FullName" class="form-control" required />
+                                        <input type="text" name="FullName" class="form-control" required value="@Model.Registration.FullName" />
+                                        @Html.ValidationMessage("FullName", "", new { @class = "text-danger" })
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">E-posta Adresi</label>
-                                        <input type="email" name="Email" class="form-control" required />
+                                        <input type="email" name="Email" class="form-control" required value="@Model.Registration.Email" />
+                                        @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Telefon Numarası</label>
-                                        <input type="tel" name="PhoneNumber" class="form-control" />
+                                        <input type="tel" name="PhoneNumber" class="form-control" required value="@Model.Registration.PhoneNumber" />
+                                        @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
                                     </div>
                                     <div class="d-grid">
                                         <button type="submit" class="btn btn-register">Şimdi Kayıt Ol</button>
@@ -186,15 +207,15 @@
                                 <h3>Event Organizer</h3>
                                 <div class="organizer-details">
                                     <div class="organizer-image">
-                                        <img src="@Model.OrganizerImagePath" class="img-fluid rounded" alt="Organizer">
+                                        <img src="@Model.Event.OrganizerImagePath" class="img-fluid rounded" alt="Organizer">
                                     </div>
                                     <div class="organizer-content">
-                                        <h4>@Model.OrganizerName</h4>
-                                        <p class="organizer-position">@Model.OrganizerTitle</p>
+                                        <h4>@Model.Event.OrganizerName</h4>
+                                        <p class="organizer-position">@Model.Event.OrganizerTitle</p>
                                         <p>Etkinlikle ilgili sorularınız için iletişim:</p>
                                         <div class="organizer-contact">
-                                            <p><i class="bi bi-envelope"></i> @Model.OrganizerEmail</p>
-                                            <p><i class="bi bi-telephone"></i> @Model.OrganizerPhone</p>
+                                            <p><i class="bi bi-envelope"></i> @Model.Event.OrganizerEmail</p>
+                                            <p><i class="bi bi-telephone"></i> @Model.Event.OrganizerPhone</p>
                                         </div>
                                     </div>
                                 </div>

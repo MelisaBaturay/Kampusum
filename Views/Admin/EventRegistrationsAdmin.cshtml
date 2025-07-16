@@ -1,0 +1,75 @@
+﻿@model List<Kampusum.Models.EventRegistrationsForAdminViewModel>
+
+@{
+	ViewData["Title"] = "EventRegistrationsAdmin";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+	<div class="content-wrapper">
+		<div class="page-header">
+			<h3 class="page-title"> Etkinlik Kayıtları  </h3>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Forms</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Form elements</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="row">
+
+
+
+			@foreach (var eventVm in Model)
+			{
+				<div class="card mb-4">
+					<h5 class="card-header">@eventVm.EventTitle (@eventVm.EventDate.ToString("dd.MM.yyyy"))</h5>
+					<div class="table-responsive text-nowrap">
+						<table class="table" id="datatable-@eventVm.EventId">
+							<thead>
+								<tr>
+									<th>Ad Soyad</th>
+									<th>E-posta</th>
+									<th>Telefon</th>
+									<th>Etkinlik İsmi</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var reg in eventVm.Registrations)
+								{
+									<tr>
+										<td>@reg.FullName</td>
+										<td>@reg.Email</td>
+										<td>@reg.PhoneNumber</td>
+										<td>@eventVm.EventTitle</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<script>
+					$('#datatable-@eventVm.EventId').DataTable({
+						language: {
+							// ... senin ayarların ...
+						},
+						dom: 'Bfrtip',
+						buttons: [
+							'copy', 'excel', 'pdf', 'print'
+						],
+						responsive: true
+					});
+				</script>
+			}
+
+
+
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container-fluid clearfix">
+			<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+			<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+		</div>
+	</footer>
+</div>
