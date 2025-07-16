@@ -11,11 +11,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 
-//builder.Services.ConfigureApplicationCookie(options =>
-//{
-//    options.AccessDeniedPath = "/Account/AccessDenied";
-//});
-
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -31,7 +26,8 @@ builder.Services.AddAuthentication("Cookies")
         {
             var path = context.Request.Path.ToString().ToLower();
 
-            if (path.Contains("/admin") || path.Contains("/news/create") || path.Contains("/events/create"))
+            if (path.Contains("/admin") || path.Contains("/news/create") || path.Contains("/news/delete") || path.Contains("/events/create") || path.Contains("/events/delete")
+            || path.Contains("/announcement/create") || path.Contains("/announcement/delete"))
             {
                 context.Response.Redirect("/Admin/Login?ReturnUrl=" + Uri.EscapeDataString(context.Request.Path));
             }

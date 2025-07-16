@@ -1,4 +1,4 @@
-﻿@model Kampusum.Models.Event
+﻿@model IEnumerable<Kampusum.Models.Announcement>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,13 +6,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Event Details - College Bootstrap Template</title>
+    <title>Duyurular ve Etkinlikler -  Bootstrap Template</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="/College/assets/img/favicon.png" rel="icon">
-    <link href="/College/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../College/assets/img/favicon.png" rel="icon">
+    <link href="../College/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,34 +20,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="/College/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/College/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/College/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/College/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="/College/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../College/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../College/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../College/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../College/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../College/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="/College/assets/css/main.css" rel="stylesheet">
+    <link href="../College/assets/css/main.css" rel="stylesheet">
 
     <!-- =======================================================
-    * Template Name: College
-    * Template URL: https://bootstrapmade.com/college-bootstrap-education-template/
+    * Template Name: ../College
+    * Template URL: https://bootstrapmade.com/../College-bootstrap-education-template/
     * Updated: Jun 19 2025 with Bootstrap v5.3.6
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 </head>
 
-<body class="event-details-page">
+
+<body class="events-page">
 
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-end">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="/College/assets/img/logo.webp" alt=""> -->
+                <!-- <img src="../College/assets/img/logo.webp" alt=""> -->
                 <h1 class="sitename">Kampüsüm</h1>
             </a>
+
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="../Home/Starter" class="active">Ana Sayfa</a></li>
@@ -84,128 +86,101 @@
             </nav>
         </div>
     </header>
-
+    <!-- Page Title -->
+    <div class="page-title light-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0">Etkinlikler </h1>
+            <nav class="breadcrumbs">
+            </nav>
+        </div>
+    </div><!-- End Page Title -->
     <main class="main">
 
         <!-- Page Title -->
         <div class="page-title light-background">
             <div class="container d-lg-flex justify-content-between align-items-center">
-                <h1 class="mb-2 mb-lg-0">Event Details</h1>
+                <h1 class="mb-2 mb-lg-0">Duyurular </h1>
                 <nav class="breadcrumbs">
-                    <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li class="current">Event Details</li>
-                    </ol>
                 </nav>
             </div>
         </div><!-- End Page Title -->
-        <!-- Event Section -->
-        <section id="event" class="event section">
+        <!-- Events Extended Section -->
+        <section id="events-extended" class="events-extended section">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row">
-                    <!-- Sol İçerik -->
                     <div class="col-lg-8">
-                        <div class="event-image mb-4" data-aos="fade-up">
-                            <img src="@Model.ImagePath" alt="Event" class="img-fluid rounded" />
-                        </div>
-
-                        <div class="event-meta mb-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <div class="meta-item">
-                                        <i class="bi bi-calendar-date"></i>
-                                        <span>@Model.Date.ToString("dd.MM.yyyy")</span>
+                        <!-- Events List -->
+                        <div class="events-list">
+                            @foreach (var item in Model)
+                            {
+                                <div class="event-item" data-aos="fade-up">
+                                    <div class="event-date">
+                                        <span class="day">@item.Date.Day</span>
+                                        <span class="month">@item.Date.ToString("MMM")</span>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="meta-item">
-                                        <i class="bi bi-clock"></i>
-                                        <span>@Model.StartTime.ToString(@"hh\:mm") - @Model.EndTime.ToString(@"hh\:mm")</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="meta-item">
-                                        <i class="bi bi-geo-alt"></i>
-                                        <span>@Model.Location</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="event-content" data-aos="fade-up" data-aos-delay="200">
-                            <h2>@Model.Title</h2>
-                            <p>@Model.Description</p>
-
-                            <h3 class="mt-4">Etkinlik Programı</h3>
-                            <div class="schedule-table">
-                                @if (Model.Schedules != null && Model.Schedules.Any())
-                                {
-                                    foreach (var item in Model.Schedules)
-                                    {
-                                        <div class="schedule-row">
-                                            <div class="schedule-time">@item.StartTime.ToString(@"hh\:mm") - @item.EndTime.ToString(@"hh\:mm")</div>
-                                            <div class="schedule-activity">
-                                                <h4>@item.Title</h4>
-                                                <p>@item.Description</p>
-                                            </div>
+                                    <div class="event-content">
+                                        <h3 class="event-title">@item.Title</h3>
+                                        <div class="event-meta">
+                                            @if (item.StartTime != null && item.EndTime != null)
+                                            {
+                                                <span>
+                                                    <i class="bi bi-clock"></i>
+                                                    @item.StartTime.Value.ToString(@"hh\:mm") - @item.EndTime.Value.ToString(@"hh\:mm")
+                                                </span>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.Location))
+                                            {
+                                                <span>
+                                                    <i class="bi bi-geo-alt"></i>
+                                                    @item.Location
+                                                </span>
+                                            }
                                         </div>
-                                    }
-                                }
+                                        <p class="event-description">@item.Description</p>
+                                        <!-- Detay butonu istersen ekleyebilirsin -->
+                                        @* <a href="@Url.Action("Details", "Announcement", new { id = item.Id })" class="btn-event-details">
+                                    Detaylar <i class="bi bi-arrow-right"></i>
+                                </a> *@
+                                    </div>
+                                </div>
+                            }
+                            <!-- Pagination (statik, istersen dinamik yapabilirsin) -->
+                            <div class="events-pagination" data-aos="fade-up" data-aos-delay="100">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-arrow-left"></i></a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><i class="bi bi-arrow-right"></i></a></li>
+                                </ul>
                             </div>
-                        </div>
+                        </div><!-- End Events List -->
                     </div>
-
-                    <!-- Sağ Kayıt ve Organizatör -->
                     <div class="col-lg-4">
-                        <div class="event-sidebar">
-                            <!-- Kayıt Formu -->
-                            <div class="sidebar-widget registration-form" data-aos="fade-left" data-aos-delay="200">
-                                <h3>Bu Etkinliğe kaydolun</h3>
-                                <form asp-action="Register" asp-controller="Event" method="post">
-                                    <input type="hidden" name="EventId" value="@Model.EventId" />
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Ad Soyad</label>
-                                        <input type="text" name="FullName" class="form-control" required />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">E-posta Adresi</label>
-                                        <input type="email" name="Email" class="form-control" required />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Telefon Numarası</label>
-                                        <input type="tel" name="PhoneNumber" class="form-control" />
-                                    </div>
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-register">Şimdi Kayıt Ol</button>
+                        <!-- Sidebar -->
+                        <div class="events-sidebar">
+                            <!-- Search Form -->
+                            <div class="sidebar-item search-form" data-aos="fade-up">
+                                <h4>Duyuruları Ara</h4>
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Ara...">
+                                        <button class="btn" type="submit"><i class="bi bi-search"></i></button>
                                     </div>
                                 </form>
-                            </div>
-
-                            <!-- Organizatör Bilgisi -->
-                            <div class="sidebar-widget organizer-info" data-aos="fade-left" data-aos-delay="300">
-                                <h3>Event Organizer</h3>
-                                <div class="organizer-details">
-                                    <div class="organizer-image">
-                                        <img src="@Model.OrganizerImagePath" class="img-fluid rounded" alt="Organizer">
-                                    </div>
-                                    <div class="organizer-content">
-                                        <h4>@Model.OrganizerName</h4>
-                                        <p class="organizer-position">@Model.OrganizerTitle</p>
-                                        <p>Etkinlikle ilgili sorularınız için iletişim:</p>
-                                        <div class="organizer-contact">
-                                            <p><i class="bi bi-envelope"></i> @Model.OrganizerEmail</p>
-                                            <p><i class="bi bi-telephone"></i> @Model.OrganizerPhone</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </div><!-- End Search Form -->
+                        </div><!-- End Sidebar -->
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+
+
+
+
 
     <footer id="footer" class="footer position-relative light-background">
 
@@ -287,6 +262,10 @@
     </footer>
 
 
+
+
+
+
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -294,17 +273,17 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="/College/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/College/assets/vendor/php-email-form/validate.js"></script>
-    <script src="/College/assets/vendor/aos/aos.js"></script>
-    <script src="/College/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/College/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/College/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="/College/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/College/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../College/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../College/assets/vendor/php-email-form/validate.js"></script>
+    <script src="../College/assets/vendor/aos/aos.js"></script>
+    <script src="../College/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../College/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../College/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../College/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../College/assets/vendor/glightbox/js/glightbox.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="/College/assets/js/main.js"></script>
+    <script src="../College/assets/js/main.js"></script>
 
 </body>
 

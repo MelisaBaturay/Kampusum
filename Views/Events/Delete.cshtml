@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Kampusum.Models.Event>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Form elements </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Etkinlikler</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Tarih</th>
+                                        <th>Başlangıç Saati</th>
+                                        <th>Bitiş Saati</th>
+                                        <th>Lokasyon</th>
+                                        <th>Organizatör</th>
+                                        <th>Organizatör Unvan</th>
+                                        <th>Organizatör Email</th>
+                                        <th>Organizatör Telefon</th>
+                                        <th>Takvim</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Title</td>
+                                            <td>@item.Date.ToShortDateString()</td>
+                                            <td>@item.StartTime.ToString(@"hh\:mm")</td>
+                                            <td>@item.EndTime.ToString(@"hh\:mm")</td>
+                                            <td>@item.Location</td>
+                                            <td>@item.OrganizerName</td>
+                                            <td>@item.OrganizerTitle</td>
+                                            <td>@item.OrganizerEmail</td>
+                                            <td>@item.OrganizerPhone</td>
+
+                                            <td>
+                                                @if (item.Schedules != null && item.Schedules.Any())
+                                                {
+                                                    <ul style="padding-left: 15px;">
+                                                        @foreach (var sch in item.Schedules)
+                                                        {
+                                                            <li>
+                                                                <b>@sch.Title</b>: @sch.Description <br />
+                                                                @sch.StartTime.ToString(@"hh\:mm") - @sch.EndTime.ToString(@"hh\:mm")
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                                else
+                                                {
+                                                    <span>-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <form asp-action="Delete" asp-controller="Events" asp-route-id="@item.EventId" method="post" style="display:inline;">
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">
+                                                        Sil
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+            </div>
+        </footer>
+    </div>

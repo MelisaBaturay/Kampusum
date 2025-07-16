@@ -14,6 +14,7 @@ namespace Kampusum.Controllers
         }
         public IActionResult Index(string search)
         {
+
             var eventCards = _context.EventCards.AsQueryable();
 
             if (!string.IsNullOrEmpty(search))
@@ -70,11 +71,32 @@ namespace Kampusum.Controllers
                 _context.Events.Add(model);
                 _context.SaveChanges();
 
-                // ID artık burada var, veritabanı tarafından atanmış
+                // ID artık burada
                 return RedirectToAction("EventsDetails", "Events", new { id = model.EventId });
             }
 
             return View(model);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            var eventList = _context.Events.ToList();
+            return View(eventList);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var eventItem = _context.Events.Find(id);
+            if (eventItem != null)
+            {
+                _context.Events.Remove(eventItem);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Delete");
         }
     }
 }

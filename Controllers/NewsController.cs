@@ -32,5 +32,25 @@ namespace Kampusum.Controllers
 
             return View(news);
         }
+
+        [Authorize(Policy = "AdminOnly")]
+        public IActionResult Delete()
+        {
+            var newsList = _context.Newss.ToList();
+            return View(newsList);
+        }
+        [Authorize(Policy = "AdminOnly")]
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var newsItem = _context.Newss.Find(id);
+            if (newsItem != null)
+            {
+                _context.Newss.Remove(newsItem);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Delete");
+        }
     }
 }

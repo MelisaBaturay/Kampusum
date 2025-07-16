@@ -14,5 +14,7 @@ namespace Kampusum.Models
         public DbSet<EventSchedule> EventSchedules { get; set; }
         public DbSet<EventRegistration> EventRegistrations { get; set; }
         public DbSet<EventCard> EventCards { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
+
     }
 }
