@@ -186,10 +186,10 @@
                         </div>
                         <!-- Event Calendar -->
                         <div class="sidebar-item event-calendar" data-aos="fade-up" data-aos-delay="300">
-                            <h4>Event Calendar</h4>
+                            <h4>Etkinlik Takvimi</h4>
                             <div class="calendar-widget">
                                 <div class="calendar-header">
-                                    <h5>May 2023</h5>
+                                    <h5 id="calendar-month"></h5>
                                     <div class="calendar-nav">
                                         <a href="#" class="prev-month"><i class="bi bi-chevron-left"></i></a>
                                         <a href="#" class="next-month"><i class="bi bi-chevron-right"></i></a>
@@ -198,65 +198,134 @@
                                 <table class="calendar-table">
                                     <thead>
                                         <tr>
-                                            <th>S</th>
-                                            <th>M</th>
-                                            <th>T</th>
-                                            <th>W</th>
-                                            <th>T</th>
-                                            <th>F</th>
-                                            <th>S</th>
+                                            <th>Pt</th>
+                                            <th>Sa</th>
+                                            <th>Ça</th>
+                                            <th>Pe</th>
+                                            <th>C</th>
+                                            <th>Ct</th>
+                                            <th>P</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>8</td>
-                                            <td>9</td>
-                                            <td>10</td>
-                                            <td>11</td>
-                                            <td>12</td>
-                                            <td>13</td>
-                                        </tr>
-                                        <tr>
-                                            <td>14</td>
-                                            <td class="has-event">15</td>
-                                            <td>16</td>
-                                            <td>17</td>
-                                            <td>18</td>
-                                            <td>19</td>
-                                            <td>20</td>
-                                        </tr>
-                                        <tr>
-                                            <td>21</td>
-                                            <td class="has-event">22</td>
-                                            <td>23</td>
-                                            <td>24</td>
-                                            <td>25</td>
-                                            <td>26</td>
-                                            <td>27</td>
-                                        </tr>
-                                        <tr>
-                                            <td>28</td>
-                                            <td>29</td>
-                                            <td>30</td>
-                                            <td>31</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                    <tbody id="calendar-body">
+                                        <!-- Günler dinamik olarak buraya gelecek -->
                                     </tbody>
                                 </table>
                             </div>
-                        </div><!-- End Event Calendar -->
+                        </div>
+
+                        <script>
+                            const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
+                                                "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+                            let currentDate = new Date();
+
+                            const calendarMonth = document.getElementById('calendar-month');
+                            const calendarBody = document.getElementById('calendar-body');
+
+                            function generateCalendar(date) {
+                                const year = date.getFullYear();
+                                const month = date.getMonth();
+
+                                calendarMonth.textContent = `${monthNames[month]} ${year}`;
+                                calendarBody.innerHTML = "";
+
+                                const firstDay = new Date(year, month, 1).getDay(); // 0 = Pazar, 1 = Pazartesi...
+                                const totalDays = new Date(year, month + 1, 0).getDate();
+
+                                let day = 1;
+                                let startDay = (firstDay + 6) % 7; // Haftayı Pazartesi başlatmak için düzeltildi
+
+                                for (let i = 0; i < 6; i++) {
+                                    const row = document.createElement("tr");
+                                    for (let j = 0; j < 7; j++) {
+                                        const cell = document.createElement("td");
+                                        if (i === 0 && j < startDay) {
+                                            cell.textContent = "";
+                                        } else if (day > totalDays) {
+                                            cell.textContent = "";
+                                        } else {
+                                            cell.textContent = day;
+
+                                            const today = new Date();
+                                            if (
+                                                day === today.getDate() &&
+                                                month === today.getMonth() &&
+                                                year === today.getFullYear()
+                                            ) {
+                                                cell.classList.add("today");
+                                            }
+
+                                            day++;
+                                        }
+                                        row.appendChild(cell);
+                                    }
+                                    calendarBody.appendChild(row);
+                                }
+                            }
+
+                            document.querySelector(".prev-month").addEventListener("click", (e) => {
+                                e.preventDefault();
+                                currentDate.setMonth(currentDate.getMonth() - 1);
+                                generateCalendar(currentDate);
+                            });
+
+                            document.querySelector(".next-month").addEventListener("click", (e) => {
+                                e.preventDefault();
+                                currentDate.setMonth(currentDate.getMonth() + 1);
+                                generateCalendar(currentDate);
+                            });
+
+                            generateCalendar(currentDate);
+                        </script>
+
+                        <style>
+                            .calendar-widget {
+                                padding: 10px;
+                                background-color: #f9f9f9;
+                                border-radius: 10px;
+                                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                            }
+
+                            .calendar-table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                text-align: center;
+                                margin-top: 10px;
+                            }
+
+                                .calendar-table th,
+                                .calendar-table td {
+                                    padding: 10px;
+                                    font-size: 14px;
+                                }
+
+                                    .calendar-table td.today {
+                                        background-color: #ffc107;
+                                        font-weight: bold;
+                                        color: #000;
+                                        border-radius: 50%;
+                                    }
+
+                            .calendar-nav a {
+                                text-decoration: none;
+                                color: #000;
+                                font-size: 18px;
+                                margin: 0 5px;
+                            }
+
+                            .calendar-header {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+
+                                .calendar-header h5 {
+                                    margin: 0;
+                                    font-size: 18px;
+                                    font-weight: 600;
+                                }
+                        </style>
+
                     </div>
                 </div>
 
@@ -295,7 +364,7 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Kampüs Olanakları ve Yaşam</h4>
                     <ul>
-                        <li><a href="https://www.inonu.edu.tr/totm">Turgut Özal Tıp Merkezi</a></li>
+                        <li><a href="https://totm.inonu.edu.tr/">Turgut Özal Tıp Merkezi</a></li>
                         <li><a href="https://kutuphane.inonu.edu.tr">Kütüphane ve Dokümantasyon Daire Başkanlığı</a></li>
                         <li><a href="https://www.inonu.edu.tr/spor.sube">Spor Hizmetleri ve Tesisleri</a></li>
                         <li><a href="https://harita.inonu.edu.tr">Kampüs Ulaşım ve Harita</a></li>

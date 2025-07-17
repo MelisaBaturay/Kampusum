@@ -1,75 +1,87 @@
 ﻿@model List<Kampusum.Models.EventRegistrationsForAdminViewModel>
 
 @{
-	ViewData["Title"] = "EventRegistrationsAdmin";
-	Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "EventRegistrationsAdmin";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <div class="main-panel">
-	<div class="content-wrapper">
-		<div class="page-header">
-			<h3 class="page-title"> Etkinlik Kayıtları  </h3>
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Forms</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Form elements</li>
-				</ol>
-			</nav>
-		</div>
-		<div class="row">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Etkinlik Kayıtları  </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
+            @foreach (var eventVm in Model)
+            {
+                <div class="col-lg-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@eventVm.EventTitle (@eventVm.EventDate.ToString("dd.MM.yyyy"))</h4>
 
+                            <!-- Excel Export Butonu -->
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-success btn-sm" onclick="exportToExcel('datatable-@eventVm.EventId', '@eventVm.EventTitle')">
+                                    <i class="mdi mdi-file-excel"></i> Excel'e Aktar
+                                </button>
+                            </div>
 
-			@foreach (var eventVm in Model)
-			{
-				<div class="card mb-4">
-					<h5 class="card-header">@eventVm.EventTitle (@eventVm.EventDate.ToString("dd.MM.yyyy"))</h5>
-					<div class="table-responsive text-nowrap">
-						<table class="table" id="datatable-@eventVm.EventId">
-							<thead>
-								<tr>
-									<th>Ad Soyad</th>
-									<th>E-posta</th>
-									<th>Telefon</th>
-									<th>Etkinlik İsmi</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach (var reg in eventVm.Registrations)
-								{
-									<tr>
-										<td>@reg.FullName</td>
-										<td>@reg.Email</td>
-										<td>@reg.PhoneNumber</td>
-										<td>@eventVm.EventTitle</td>
-									</tr>
-								}
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<script>
-					$('#datatable-@eventVm.EventId').DataTable({
-						language: {
-							// ... senin ayarların ...
-						},
-						dom: 'Bfrtip',
-						buttons: [
-							'copy', 'excel', 'pdf', 'print'
-						],
-						responsive: true
-					});
-				</script>
-			}
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="datatable-@eventVm.EventId">
+                                    <thead>
+                                        <tr>
+                                            <th>Ad Soyad</th>
+                                            <th>E-posta</th>
+                                            <th>Telefon</th>
+                                            <th>Etkinlik İsmi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var reg in eventVm.Registrations)
+                                        {
+                                            <tr>
+                                                <td>@reg.FullName</td>
+                                                <td>@reg.Email</td>
+                                                <td>@reg.PhoneNumber</td>
+                                                <td>@eventVm.EventTitle</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#datatable-@eventVm.EventId').DataTable({
+                        language: {
+                            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/tr.json'
+                        },
+                        responsive: true
+                    });
+                </script>
+            }
 
-
-
-		</div>
-	</div>
-	<footer class="footer">
-		<div class="container-fluid clearfix">
-			<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-			<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
-		</div>
-	</footer>
+            <script>
+                function exportToExcel(tableId, eventTitle) {
+                    var table = document.getElementById(tableId);
+                    var wb = XLSX.utils.table_to_book(table, {sheet: eventTitle});
+                    XLSX.writeFile(wb, eventTitle + '_Kayitlar.xlsx');
+                }
+            </script>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
 </div>

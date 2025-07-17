@@ -32,8 +32,15 @@
     <Content Remove="wwwroot\College\assets\img\education\campus-2.webp" />
     <Content Remove="wwwroot\College\assets\img\education\campus-5.webp" />
     <Content Remove="wwwroot\College\assets\img\education\fen-edebiyatfak.htm" />
+    <Content Remove="wwwroot\College\assets\img\education\kampüste öğrenciler.jpg" />
     <Content Remove="wwwroot\College\assets\img\education\sağlıkyüskekokulu.jpg" />
     <Content Remove="wwwroot\College\assets\img\education\showcase-6.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-1.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-2.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-3.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-4.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-5.webp" />
+    <Content Remove="wwwroot\College\assets\img\education\students-6.webp" />
     <Content Remove="wwwroot\College\assets\img\person\imgres %281%29.htm" />
     <Content Remove="wwwroot\College\assets\img\person\indirperson-f-12.webp" />
     <Content Remove="wwwroot\College\assets\img\person\klinik.htm" />

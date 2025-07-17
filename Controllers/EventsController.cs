@@ -116,10 +116,8 @@ namespace Kampusum.Controllers
                 _context.EventRegistrations.Add(registration);
                 _context.SaveChanges();
 
-                // Etkinlik bilgilerini çek
                 var eventDetail = _context.Events.FirstOrDefault(e => e.EventId == registration.EventId);
 
-                // Mail içeriği hazırla
                 var subject = "Etkinlik Kaydınız Başarılı!";
                 var body = $@"
             <h2>Etkinlik Kaydınız Başarıyla Tamamlandı</h2>
@@ -132,7 +130,6 @@ namespace Kampusum.Controllers
             <p>Katılımınız için teşekkürler!</p>
         ";
 
-                // Mail gönder
                 await _emailService.SendEmailAsync(registration.Email, subject, body);
 
                 TempData["SuccessMessage"] = "Kayıt başarılı! Bilgileriniz e-posta adresinize gönderildi.";

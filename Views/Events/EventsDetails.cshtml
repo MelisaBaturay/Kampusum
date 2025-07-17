@@ -105,9 +105,21 @@
                 <div class="row">
                     <!-- Sol İçerik -->
                     <div class="col-lg-8">
+                        <style>
+                            .event-image img {
+                                width: 100%;
+                                height: auto;
+                                object-fit: contain;
+                                max-width: 100%;
+                                display: block;
+                                margin: 0 auto;
+                            }
+                        </style>
+
                         <div class="event-image mb-4" data-aos="fade-up">
                             <img src="@Model.Event.ImagePath" alt="Event" class="img-fluid rounded" />
                         </div>
+
 
                         <div class="event-meta mb-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="row g-3">
@@ -256,7 +268,7 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Kampüs Olanakları ve Yaşam</h4>
                     <ul>
-                        <li><a href="https://www.inonu.edu.tr/totm">Turgut Özal Tıp Merkezi</a></li>
+                        <li><a href="https://totm.inonu.edu.tr/">Turgut Özal Tıp Merkezi</a></li>
                         <li><a href="https://kutuphane.inonu.edu.tr">Kütüphane ve Dokümantasyon Daire Başkanlığı</a></li>
                         <li><a href="https://www.inonu.edu.tr/spor.sube">Spor Hizmetleri ve Tesisleri</a></li>
                         <li><a href="https://harita.inonu.edu.tr">Kampüs Ulaşım ve Harita</a></li>
