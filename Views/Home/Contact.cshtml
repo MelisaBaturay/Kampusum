@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Kampusum.Models.ContactMessage
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -102,13 +104,13 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="contact-main-wrapper">
                     <div class="map-wrapper">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8683.412272838754!2d38.43499834207601!3d38.33199888814358!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4076384f5ef99bf1%3A0xb34b0d7f20c9a9f!2zw5xuaXZlcnNpdGUsIMSwbsO2bsO8IMOcbnYuLCBCYXR0YWxnYXppL01hbGF0eWE!5e0!3m2!1str!2str!4v1752177267352!5m2!1str!2str" 
-                        width="650" 
-                        height="780" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8683.412272838754!2d38.43499834207601!3d38.33199888814358!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4076384f5ef99bf1%3A0xb34b0d7f20c9a9f!2zw5xuaXZlcnNpdGUsIMSwbsO2bsO8IMOcbnYuLCBCYXR0YWxnYXppL01hbGF0eWE!5e0!3m2!1str!2str!4v1752177267352!5m2!1str!2str"
+                                width="650"
+                                height="780"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                     <div class="contact-content">
@@ -134,7 +136,7 @@
                                                 const lng = position.coords.longitude;
                                                 const destination = encodeURIComponent('İnönü Üniversitesi, Malatya Elazığ Yolu 10.KM No:44210, 44000 Battalgazi/Malatya');
 
-                                                const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}&travelmode=driving`;
+                                                const mapsUrl = https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}&travelmode=driving;
 
                                                 window.open(mapsUrl, '_blank');
                                               },
@@ -182,6 +184,57 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="contact-form-container" data-aos="fade-up" data-aos-delay="400">
+                            <h3>İLETİŞİM FORMU</h3>
+                            <p>
+                                Lütfen bize iletmek istediğiniz mesajı bu alana yazınız.
+                                Öneri, şikayet, teşekkür, bilgi talebi ya da iletişim amaçlı diğer tüm konular için bu alanı kullanabilirsiniz.
+                            </p>
+
+                            @if (ViewBag.Success != null)
+                            {
+                                <div class="alert alert-success">@ViewBag.Success</div>
+                            }
+                            @if (ViewBag.Error != null)
+                            {
+                                <div class="alert alert-danger">@ViewBag.Error</div>
+                            }
+
+                            <form asp-controller="Home" asp-action="Contact" method="post" class="php-email-form">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input asp-for="Name" class="form-control" placeholder="Ad/Soyad" required />
+                                    </div>
+                                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                                        <input asp-for="Email" class="form-control" placeholder="E-mail" required />
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input asp-for="Subject" class="form-control" placeholder="Konu" required />
+                                </div>
+                                <div class="form-group mt-3">
+                                    <textarea asp-for="Message" class="form-control" rows="5" placeholder="Mesaj" required></textarea>
+                                </div>
+
+                                <div class="my-3">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                                </div>
+
+                                <div class="form-submit">
+                                    <button type="submit">Mesajı Gönder</button>
+                                    <div class="social-links">
+                                        <a href="http://x.com/inukurumsal"><i class="bi bi-twitter-x"></i></a>
+                                        <a href="https://www.facebook.com/inukurumsal"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://www.instagram.com/inukurumsal/"><i class="bi bi-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/school/inukurumsal/"><i class="bi bi-linkedin"></i></a>
+                                        <a href="https://www.youtube.com/inukurumsal"><i class="bi bi-youtube"></i><
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,7 +244,7 @@
 
 
 
-   <footer id="footer" class="footer position-relative light-background">
+    <footer id="footer" class="footer position-relative light-background">
 
         <div class="container footer-top">
             <div class="row gy-4">
@@ -219,7 +272,7 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Kampüs Olanakları ve Yaşam</h4>
                     <ul>
-                        <li><a href="https://totm.inonu.edu.tr/">Turgut Özal Tıp Merkezi</a></li>
+                        <li><a href="https://www.inonu.edu.tr/totm">Turgut Özal Tıp Merkezi</a></li>
                         <li><a href="https://kutuphane.inonu.edu.tr">Kütüphane ve Dokümantasyon Daire Başkanlığı</a></li>
                         <li><a href="https://www.inonu.edu.tr/spor.sube">Spor Hizmetleri ve Tesisleri</a></li>
                         <li><a href="https://harita.inonu.edu.tr">Kampüs Ulaşım ve Harita</a></li>
@@ -282,7 +335,6 @@
 
     <!-- Vendor JS Files -->
     <script src="../College/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../College/assets/vendor/php-email-form/validate.js"></script>
     <script src="../College/assets/vendor/aos/aos.js"></script>
     <script src="../College/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="../College/assets/vendor/purecounter/purecounter_vanilla.js"></script>

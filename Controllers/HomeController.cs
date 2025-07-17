@@ -22,11 +22,29 @@ namespace Kampusum.Controllers
         public IActionResult StudentLife()
         {
             return View();
-        } 
+        }
         public IActionResult Contact()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Contact(ContactMessage contactMessage)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.ContactMessages.Add(contactMessage);
+                _context.SaveChanges();
+                ViewBag.Success = "Mesajınız başarıyla iletildi.";
+                ModelState.Clear();
+                return View(new ContactMessage());
+            }
+            else
+            {
+                ViewBag.Error = "Lütfen tüm alanları doğru doldurun.";
+                return View(contactMessage);
+            }
+        }
     }
 }

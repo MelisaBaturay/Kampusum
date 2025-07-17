@@ -16,6 +16,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\Contact.cs" />
     <Compile Remove="Controllers\NewsController..cs" />
+    <Compile Remove="Models\ContactMessagecs.cs" />
     <Compile Remove="Views\List.cshtml.cs" />
   </ItemGroup>
 
